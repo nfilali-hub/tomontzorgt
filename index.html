@@ -5,10 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>TomOntzorgt | Samen ontdekken wat wél kan</title>
-  <meta
-    name="description"
-    content="TomOntzorgt helpt jongeren hun talenten ontdekken, verbinding maken en groeien op school, in hun vrije tijd en richting werk."
-  >
+  <meta name="description" content="TomOntzorgt helpt jongeren hun talenten ontdekken, verbinding maken en groeien op school, in hun vrije tijd en richting werk.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,23 +13,20 @@
 
   <style>
     :root {
-      --navy: #112d3c;
-      --navy-2: #173c48;
-      --green: #37685e;
+      --navy: #102d3b;
+      --navy-light: #173d49;
+      --green: #37675d;
       --green-light: #dce7d8;
-      --orange: #e9693d;
-      --orange-dark: #d9582f;
-      --yellow: #f2d77e;
-
+      --orange: #e96b3e;
+      --orange-dark: #d95a31;
+      --yellow: #f0d27a;
       --paper: #faf8f2;
-      --paper-dark: #f1ede4;
+      --paper-dark: #f0ece3;
       --white: #ffffff;
-
       --text: #18313e;
       --muted: #64747a;
-      --line: rgba(17, 45, 60, 0.14);
-
-      --max-width: 1240px;
+      --line: rgba(17,45,60,.14);
+      --max: 1240px;
     }
 
     * {
@@ -45,14 +39,10 @@
 
     body {
       margin: 0;
+      overflow-x: hidden;
       background: var(--paper);
       color: var(--text);
-      font-family: "DM Sans", sans-serif;
-      overflow-x: hidden;
-    }
-
-    body.menu-open {
-      overflow: hidden;
+      font-family: "DM Sans", Arial, sans-serif;
     }
 
     img {
@@ -67,18 +57,14 @@
       text-decoration: none;
     }
 
-    button {
-      font: inherit;
-    }
-
     h1,
     h2,
     h3,
     h4 {
       margin: 0;
-      font-family: "Manrope", sans-serif;
-      letter-spacing: -0.045em;
+      font-family: "Manrope", Arial, sans-serif;
       line-height: 1.04;
+      letter-spacing: -.045em;
     }
 
     p {
@@ -86,35 +72,86 @@
     }
 
     .container {
-      width: min(var(--max-width), calc(100% - 48px));
-      margin: 0 auto;
+      width: min(var(--max), calc(100% - 48px));
+      margin: auto;
     }
 
-    /* =========================================================
-       HEADER
-    ========================================================= */
+    /* ==========================
+       BUTTONS
+    ========================== */
 
-    .site-header {
-      height: 76px;
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+
+      min-height: 48px;
+      padding: 0 20px;
+
+      border: 0;
+      border-radius: 999px;
+
+      background: var(--orange);
+      color: white;
+
+      font-weight: 700;
+      transition: .2s ease;
+    }
+
+    .button:hover {
+      background: var(--orange-dark);
+      transform: translateY(-2px);
+    }
+
+    .button span {
+      width: 25px;
+      height: 25px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+      background: rgba(255,255,255,.18);
+    }
+
+    .button-outline {
+      border: 1px solid rgba(16,45,59,.35);
+      background: transparent;
+      color: var(--navy);
+    }
+
+    .button-outline:hover {
+      background: var(--navy);
+      color: white;
+    }
+
+    /* ==========================
+       HEADER
+    ========================== */
+
+    header {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(17, 45, 60, 0.08);
+
+      height: 76px;
+
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(14px);
+
+      border-bottom: 1px solid rgba(16,45,59,.08);
     }
 
     .header-inner {
       height: 100%;
+
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 30px;
+      gap: 32px;
     }
 
     .logo {
-      display: inline-flex;
-      align-items: center;
       font-family: "Manrope", sans-serif;
       font-size: 24px;
       font-weight: 800;
@@ -126,536 +163,543 @@
       font-weight: 500;
     }
 
-    .desktop-nav {
+    nav {
+      margin-left: auto;
+
       display: flex;
       align-items: center;
-      gap: 27px;
-      margin-left: auto;
+      gap: 25px;
+
       font-size: 13px;
       font-weight: 700;
     }
 
-    .desktop-nav > a:not(.button) {
+    nav > a:not(.button) {
       position: relative;
-      padding: 28px 0;
+      padding: 29px 0;
     }
 
-    .desktop-nav > a:not(.button)::after {
+    nav > a:not(.button)::after {
       content: "";
+
       position: absolute;
-      left: 0;
       bottom: 20px;
+      left: 0;
+
       width: 0;
       height: 2px;
+
       background: var(--orange);
-      transition: width 0.25s ease;
+
+      transition: .25s;
     }
 
-    .desktop-nav > a:not(.button):hover::after {
+    nav > a:not(.button):hover::after {
       width: 100%;
     }
 
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 11px;
-      min-height: 48px;
-      padding: 0 20px;
-      border: 0;
-      border-radius: 999px;
-      background: var(--orange);
-      color: white;
-      font-weight: 700;
-      cursor: pointer;
-      transition:
-        transform 0.2s ease,
-        background 0.2s ease;
-    }
-
-    .button:hover {
-      background: var(--orange-dark);
-      transform: translateY(-2px);
-    }
-
-    .button-arrow {
-      width: 26px;
-      height: 26px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.18);
-    }
-
-    .button-outline {
-      color: var(--navy);
-      background: transparent;
-      border: 1px solid rgba(17, 45, 60, 0.4);
-    }
-
-    .button-outline:hover {
-      color: white;
-      background: var(--navy);
-    }
-
-    .mobile-toggle {
+    .mobile-menu {
       display: none;
-      width: 46px;
-      height: 46px;
-      padding: 0;
-      border: 0;
-      border-radius: 50%;
-      background: var(--paper-dark);
-      color: var(--navy);
-      font-size: 22px;
-      cursor: pointer;
+      margin-left: auto;
+      font-size: 26px;
     }
 
-    /* =========================================================
+    /* ==========================
        HERO
-    ========================================================= */
+    ========================== */
 
     .hero {
-      position: relative;
       min-height: 680px;
-      background: white;
       overflow: hidden;
+      background: white;
     }
 
     .hero-grid {
+      min-height: 680px;
+
       display: grid;
       grid-template-columns: 46% 54%;
-      min-height: 680px;
     }
 
     .hero-copy {
-      position: relative;
-      z-index: 3;
       display: flex;
       flex-direction: column;
       justify-content: center;
+
       padding:
-        72px 60px 90px
-        max(24px, calc((100vw - var(--max-width)) / 2));
+        75px
+        55px
+        90px
+        max(24px, calc((100vw - var(--max)) / 2));
     }
 
     .eyebrow {
-      margin-bottom: 16px;
+      margin-bottom: 17px;
+
       color: var(--green);
+
       font-size: 12px;
       font-weight: 800;
+
       letter-spacing: 2px;
       text-transform: uppercase;
     }
 
     .hero h1 {
-      max-width: 640px;
+      max-width: 650px;
+
       color: var(--navy);
-      font-size: clamp(52px, 5.8vw, 82px);
+
+      font-size: clamp(51px, 5.8vw, 83px);
     }
 
-    .handwriting {
+    .hand-title {
       position: relative;
+
       display: inline-block;
+
       color: var(--green);
+
       font-family: "Patrick Hand", cursive;
       font-weight: 400;
       letter-spacing: 0;
     }
 
-    .handwriting::after {
+    .hand-title::after {
       content: "";
+
       position: absolute;
       right: 0;
-      bottom: -5px;
+      bottom: -3px;
       left: 0;
+
       height: 6px;
+
       border-radius: 50%;
       background: var(--yellow);
+
       transform: rotate(-1deg);
       z-index: -1;
     }
 
     .hero-description {
       max-width: 550px;
+
       margin: 26px 0 30px;
+
       color: var(--muted);
       font-size: 17px;
     }
 
     .hero-buttons {
       display: flex;
-      align-items: center;
       flex-wrap: wrap;
       gap: 11px;
     }
 
-    .hero-stats {
+    .stats {
       display: flex;
-      align-items: center;
-      gap: 0;
       margin-top: 38px;
     }
 
-    .hero-stat {
-      min-width: 105px;
-      padding: 0 26px;
+    .stat {
+      min-width: 110px;
+
+      padding: 0 27px;
+
       border-left: 1px solid var(--line);
     }
 
-    .hero-stat:first-child {
+    .stat:first-child {
       padding-left: 0;
-      border-left: 0;
+      border: 0;
     }
 
-    .hero-stat strong {
+    .stat strong {
       display: block;
-      color: var(--navy);
-      font-family: "Manrope", sans-serif;
+
+      font-family: "Manrope";
       font-size: 25px;
       font-weight: 800;
     }
 
-    .hero-stat span {
+    .stat small {
       color: var(--muted);
-      font-size: 12px;
     }
 
-    .hero-visual {
+    .hero-image {
       position: relative;
+
       min-height: 680px;
+
       background:
         linear-gradient(
           90deg,
-          rgba(255,255,255,0.08),
+          rgba(255,255,255,.08),
           transparent 25%
         ),
         url("https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1600&q=88")
-        center / cover no-repeat;
+        center / cover;
 
       clip-path: polygon(
         7% 0,
         100% 0,
         100% 100%,
-        1% 98%,
-        4% 82%,
-        0 65%,
-        4% 48%,
-        1% 28%
+        0 98%,
+        4% 80%,
+        0 64%,
+        4% 45%,
+        1% 25%
       );
     }
 
-    .hero-scribble {
+    .hero-writing {
       position: absolute;
       top: 13%;
-      right: 11%;
+      right: 10%;
+
       color: white;
-      font-family: "Patrick Hand", cursive;
-      font-size: 28px;
+
+      font-family: "Patrick Hand";
+      font-size: 29px;
       line-height: 1;
+
       text-align: center;
-      text-shadow: 0 3px 16px rgba(0,0,0,0.4);
-      transform: rotate(-7deg);
+
+      transform: rotate(-6deg);
+
+      text-shadow: 0 3px 15px rgba(0,0,0,.4);
     }
 
-    .hero-note {
+    .sticky-note {
       position: absolute;
       right: 8%;
       bottom: 8%;
-      padding: 15px 18px;
-      background: #d3e39f;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.14);
+
+      padding: 14px 17px;
+
+      background: #d4e3a1;
       color: var(--navy);
-      font-family: "Patrick Hand", cursive;
+
+      box-shadow: 0 12px 30px rgba(0,0,0,.15);
+
+      font-family: "Patrick Hand";
       font-size: 22px;
       line-height: 1.05;
+
       transform: rotate(5deg);
     }
 
-    /* =========================================================
+    /* ==========================
        INTRO
-    ========================================================= */
+    ========================== */
 
     .intro {
-      position: relative;
-      padding: 105px 0;
+      padding: 110px 0;
     }
 
     .intro-grid {
       display: grid;
-      grid-template-columns: 0.85fr 1.15fr;
-      align-items: center;
+      grid-template-columns: .85fr 1.15fr;
+
       gap: 80px;
+      align-items: center;
     }
 
     .section-title {
       color: var(--navy);
-      font-size: clamp(39px, 4.7vw, 64px);
+      font-size: clamp(40px, 4.7vw, 64px);
     }
 
-    .section-text {
+    .section-copy {
       margin: 24px 0 28px;
+
       color: var(--muted);
       font-size: 17px;
     }
 
-    .simple-link {
+    .text-link {
       display: inline-block;
-      padding-bottom: 4px;
+
+      padding-bottom: 5px;
+
       border-bottom: 2px solid var(--orange);
+
       font-weight: 800;
     }
+
+    /* COLLAGE */
 
     .collage {
       position: relative;
       height: 500px;
     }
 
-    .collage-photo {
+    .photo {
       position: absolute;
+
       overflow: hidden;
+
       background: white;
-      box-shadow: 0 18px 40px rgba(17,45,60,0.15);
+
+      box-shadow: 0 18px 40px rgba(17,45,60,.15);
     }
 
-    .collage-photo.one {
-      top: 50px;
+    .photo-1 {
+      top: 55px;
       left: 0;
+
       width: 38%;
-      height: 67%;
+      height: 65%;
+
       transform: rotate(-4deg);
     }
 
-    .collage-photo.two {
+    .photo-2 {
       top: 0;
       left: 31%;
+
       width: 47%;
       height: 82%;
+
       transform: rotate(2deg);
     }
 
-    .collage-photo.three {
+    .photo-3 {
       right: 0;
-      bottom: 10px;
+      bottom: 15px;
+
       width: 32%;
       height: 52%;
+
       transform: rotate(5deg);
     }
 
-    .collage-label {
+    .collage-note {
       position: absolute;
       z-index: 4;
+
       bottom: 20px;
       left: 42%;
+
       padding: 10px 15px;
+
       background: #eee1c4;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-      font-family: "Patrick Hand", cursive;
+
+      box-shadow: 0 8px 25px rgba(0,0,0,.08);
+
+      font-family: "Patrick Hand";
       font-size: 22px;
+
       transform: rotate(-3deg);
     }
 
-    .collage-hand {
-      position: absolute;
-      z-index: 5;
-      top: 28px;
-      right: -8px;
-      width: 150px;
-      font-family: "Patrick Hand", cursive;
-      font-size: 21px;
-      line-height: 1.1;
-      transform: rotate(5deg);
-    }
-
-    /* =========================================================
+    /* ==========================
        ROUTE
-    ========================================================= */
+    ========================== */
 
     .route {
       position: relative;
-      padding: 90px 0 110px;
-      background: var(--paper-dark);
+
+      padding: 95px 0 115px;
+
       overflow: hidden;
+
+      background: var(--paper-dark);
     }
 
-    .route::before,
-    .route::after {
-      content: "";
-      position: absolute;
-      left: -5%;
-      width: 110%;
-      height: 60px;
-      background: var(--paper);
-      border-radius: 50%;
-    }
+    .route-header {
+      max-width: 750px;
 
-    .route::before {
-      top: -42px;
-    }
+      margin: auto auto 65px;
 
-    .route::after {
-      bottom: -48px;
-    }
-
-    .route-heading {
-      max-width: 760px;
-      margin: 0 auto 65px;
       text-align: center;
     }
 
-    .route-heading p {
+    .route-header p {
       color: var(--muted);
     }
 
-    .route-steps {
+    .steps {
       position: relative;
+
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 30px;
+      grid-template-columns: repeat(4,1fr);
+
+      gap: 28px;
     }
 
-    .route-line {
+    .steps::before {
+      content: "";
+
       position: absolute;
       top: 37px;
       right: 9%;
       left: 9%;
+
       height: 2px;
-      background: rgba(55,104,94,0.25);
+
+      background: rgba(55,103,93,.25);
     }
 
-    .route-step {
+    .step {
       position: relative;
       z-index: 2;
     }
 
-    .route-icon {
+    .step-icon {
       width: 76px;
       height: 76px;
+
       display: grid;
       place-items: center;
+
       margin-bottom: 22px;
-      border: 1px solid rgba(55,104,94,0.2);
+
+      border: 1px solid rgba(55,103,93,.22);
       border-radius: 50%;
+
       background: var(--paper);
+
       color: var(--green);
+
       font-size: 26px;
     }
 
-    .route-step:nth-child(2) .route-icon {
+    .step:nth-child(2) .step-icon {
       background: var(--yellow);
     }
 
-    .route-step:nth-child(3) .route-icon {
-      background: #c9dec7;
+    .step:nth-child(3) .step-icon {
+      background: #c8ddc7;
     }
 
-    .route-step:nth-child(4) .route-icon {
+    .step:nth-child(4) .step-icon {
       background: var(--orange);
       color: white;
     }
 
-    .route-step h3 {
+    .step h3 {
       margin-bottom: 9px;
       font-size: 22px;
     }
 
-    .route-step p {
+    .step p {
       max-width: 240px;
+
       margin: 0;
+
       color: var(--muted);
       font-size: 14px;
     }
 
-    /* =========================================================
-       BIG QUOTE
-    ========================================================= */
+    /* ==========================
+       QUOTE
+    ========================== */
 
     .quote-section {
       position: relative;
-      min-height: 590px;
+
+      min-height: 580px;
+
       display: flex;
       align-items: center;
+
       color: white;
+
       background:
         url("https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1900&q=88")
-        center 45% / cover no-repeat;
+        center / cover;
     }
 
     .quote-section::before {
       content: "";
+
       position: absolute;
       inset: 0;
+
       background:
         linear-gradient(
           90deg,
-          rgba(12,42,51,0.92),
-          rgba(12,42,51,0.45) 58%,
-          rgba(12,42,51,0.08)
+          rgba(10,39,50,.92),
+          rgba(10,39,50,.48) 60%,
+          rgba(10,39,50,.08)
         );
     }
 
     .quote-content {
       position: relative;
       z-index: 2;
-      max-width: 690px;
+
+      max-width: 700px;
+
       padding: 100px 0;
     }
 
     .quote-mark {
-      height: 60px;
+      height: 65px;
+
       color: var(--yellow);
+
       font-family: Georgia, serif;
-      font-size: 110px;
-      line-height: 0.8;
+      font-size: 115px;
+      line-height: .8;
     }
 
     .quote-content h2 {
-      font-size: clamp(38px, 4.5vw, 61px);
+      font-size: clamp(39px,4.5vw,61px);
       font-weight: 600;
     }
 
-    .quote-person {
-      margin-top: 25px;
-      color: rgba(255,255,255,0.72);
+    .quote-content p {
+      color: rgba(255,255,255,.72);
     }
 
     .quote-hand {
       position: absolute;
-      right: 6%;
-      bottom: 16%;
+      right: 7%;
+      bottom: 15%;
+
       color: white;
-      font-family: "Patrick Hand", cursive;
+
+      font-family: "Patrick Hand";
       font-size: 28px;
+
       transform: rotate(6deg);
     }
 
-    /* =========================================================
+    /* ==========================
        CODE TOM
-    ========================================================= */
+    ========================== */
 
     .code {
       padding: 105px 0;
+
       background: white;
     }
 
     .code-grid {
       display: grid;
-      grid-template-columns: 0.7fr 1.3fr;
+      grid-template-columns: .7fr 1.3fr;
+
+      gap: 90px;
       align-items: center;
-      gap: 85px;
     }
 
-    .code-description {
-      max-width: 320px;
+    .code-copy {
+      max-width: 330px;
+
       color: var(--muted);
     }
 
     .tom-letters {
       margin-top: 35px;
-      font-family: "Manrope", sans-serif;
+
+      font-family: "Manrope";
       font-size: 110px;
       font-weight: 800;
-      line-height: 0.77;
+
+      line-height: .77;
       letter-spacing: -10px;
     }
 
@@ -672,7 +716,7 @@
     }
 
     .tom-letters span:nth-child(3) {
-      color: #d1a72f;
+      color: #d2a72e;
     }
 
     .values {
@@ -682,6 +726,92 @@
     .value {
       display: grid;
       grid-template-columns: 65px 1fr;
-      gap: 24px;
-      padding: 27px 0;
-      border-bottom:
+
+      gap: 25px;
+
+      padding: 28px 0;
+
+      border-bottom: 1px solid var(--line);
+    }
+
+    .value-letter {
+      font-family: "Manrope";
+      font-size: 28px;
+      font-weight: 800;
+    }
+
+    .value h3 {
+      margin-bottom: 6px;
+      font-size: 25px;
+    }
+
+    .value p {
+      margin: 0;
+
+      color: var(--muted);
+    }
+
+    /* ==========================
+       OUDERS / SCHOLEN
+    ========================== */
+
+    .audiences {
+      padding: 100px 0;
+    }
+
+    .audience-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      gap: 50px;
+    }
+
+    .audience {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+
+      gap: 25px;
+      align-items: center;
+
+      padding-top: 25px;
+
+      border-top: 1px solid rgba(55,103,93,.35);
+    }
+
+    .audience h3 {
+      font-size: 31px;
+    }
+
+    .audience p {
+      color: var(--muted);
+    }
+
+    .polaroid {
+      height: 310px;
+
+      padding: 9px 9px 32px;
+
+      background: white;
+
+      box-shadow: 0 13px 35px rgba(17,45,60,.15);
+
+      transform: rotate(3deg);
+    }
+
+    .audience:nth-child(2) .polaroid {
+      transform: rotate(-3deg);
+    }
+
+    /* ==========================
+       LOCATIONS
+    ========================== */
+
+    .locations {
+      padding: 95px 0;
+
+      background: var(--paper-dark);
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: .7fr 1
