@@ -1,817 +1,562 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>TomOntzorgt | Samen ontdekken wat wél kan</title>
-  <meta name="description" content="TomOntzorgt helpt jongeren hun talenten ontdekken, verbinding maken en groeien op school, in hun vrije tijd en richting werk.">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&family=Patrick+Hand&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --navy: #102d3b;
-      --navy-light: #173d49;
-      --green: #37675d;
-      --green-light: #dce7d8;
-      --orange: #e96b3e;
-      --orange-dark: #d95a31;
-      --yellow: #f0d27a;
-      --paper: #faf8f2;
-      --paper-dark: #f0ece3;
-      --white: #ffffff;
-      --text: #18313e;
-      --muted: #64747a;
-      --line: rgba(17,45,60,.14);
-      --max: 1240px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      overflow-x: hidden;
-      background: var(--paper);
-      color: var(--text);
-      font-family: "DM Sans", Arial, sans-serif;
-    }
-
-    img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4 {
-      margin: 0;
-      font-family: "Manrope", Arial, sans-serif;
-      line-height: 1.04;
-      letter-spacing: -.045em;
-    }
-
-    p {
-      line-height: 1.7;
-    }
-
-    .container {
-      width: min(var(--max), calc(100% - 48px));
-      margin: auto;
-    }
-
-    /* ==========================
-       BUTTONS
-    ========================== */
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-
-      min-height: 48px;
-      padding: 0 20px;
-
-      border: 0;
-      border-radius: 999px;
-
-      background: var(--orange);
-      color: white;
-
-      font-weight: 700;
-      transition: .2s ease;
-    }
-
-    .button:hover {
-      background: var(--orange-dark);
-      transform: translateY(-2px);
-    }
-
-    .button span {
-      width: 25px;
-      height: 25px;
-
-      display: grid;
-      place-items: center;
-
-      border-radius: 50%;
-      background: rgba(255,255,255,.18);
-    }
-
-    .button-outline {
-      border: 1px solid rgba(16,45,59,.35);
-      background: transparent;
-      color: var(--navy);
-    }
-
-    .button-outline:hover {
-      background: var(--navy);
-      color: white;
-    }
-
-    /* ==========================
-       HEADER
-    ========================== */
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-
-      height: 76px;
-
-      background: rgba(255,255,255,.96);
-      backdrop-filter: blur(14px);
-
-      border-bottom: 1px solid rgba(16,45,59,.08);
-    }
-
-    .header-inner {
-      height: 100%;
-
-      display: flex;
-      align-items: center;
-      gap: 32px;
-    }
-
-    .logo {
-      font-family: "Manrope", sans-serif;
-      font-size: 24px;
-      font-weight: 800;
-      letter-spacing: -1.5px;
-      white-space: nowrap;
-    }
-
-    .logo span {
-      font-weight: 500;
-    }
-
-    nav {
-      margin-left: auto;
-
-      display: flex;
-      align-items: center;
-      gap: 25px;
-
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    nav > a:not(.button) {
-      position: relative;
-      padding: 29px 0;
-    }
-
-    nav > a:not(.button)::after {
-      content: "";
-
-      position: absolute;
-      bottom: 20px;
-      left: 0;
-
-      width: 0;
-      height: 2px;
-
-      background: var(--orange);
-
-      transition: .25s;
-    }
-
-    nav > a:not(.button):hover::after {
-      width: 100%;
-    }
-
-    .mobile-menu {
-      display: none;
-      margin-left: auto;
-      font-size: 26px;
-    }
-
-    /* ==========================
-       HERO
-    ========================== */
-
-    .hero {
-      min-height: 680px;
-      overflow: hidden;
-      background: white;
-    }
-
-    .hero-grid {
-      min-height: 680px;
-
-      display: grid;
-      grid-template-columns: 46% 54%;
-    }
-
-    .hero-copy {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-
-      padding:
-        75px
-        55px
-        90px
-        max(24px, calc((100vw - var(--max)) / 2));
-    }
-
-    .eyebrow {
-      margin-bottom: 17px;
-
-      color: var(--green);
-
-      font-size: 12px;
-      font-weight: 800;
-
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .hero h1 {
-      max-width: 650px;
-
-      color: var(--navy);
-
-      font-size: clamp(51px, 5.8vw, 83px);
-    }
-
-    .hand-title {
-      position: relative;
-
-      display: inline-block;
-
-      color: var(--green);
-
-      font-family: "Patrick Hand", cursive;
-      font-weight: 400;
-      letter-spacing: 0;
-    }
-
-    .hand-title::after {
-      content: "";
-
-      position: absolute;
-      right: 0;
-      bottom: -3px;
-      left: 0;
-
-      height: 6px;
-
-      border-radius: 50%;
-      background: var(--yellow);
-
-      transform: rotate(-1deg);
-      z-index: -1;
-    }
-
-    .hero-description {
-      max-width: 550px;
-
-      margin: 26px 0 30px;
-
-      color: var(--muted);
-      font-size: 17px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 11px;
-    }
-
-    .stats {
-      display: flex;
-      margin-top: 38px;
-    }
-
-    .stat {
-      min-width: 110px;
-
-      padding: 0 27px;
-
-      border-left: 1px solid var(--line);
-    }
-
-    .stat:first-child {
-      padding-left: 0;
-      border: 0;
-    }
-
-    .stat strong {
-      display: block;
-
-      font-family: "Manrope";
-      font-size: 25px;
-      font-weight: 800;
-    }
-
-    .stat small {
-      color: var(--muted);
-    }
-
-    .hero-image {
-      position: relative;
-
-      min-height: 680px;
-
-      background:
-        linear-gradient(
-          90deg,
-          rgba(255,255,255,.08),
-          transparent 25%
-        ),
-        url("https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1600&q=88")
-        center / cover;
-
-      clip-path: polygon(
-        7% 0,
-        100% 0,
-        100% 100%,
-        0 98%,
-        4% 80%,
-        0 64%,
-        4% 45%,
-        1% 25%
-      );
-    }
-
-    .hero-writing {
-      position: absolute;
-      top: 13%;
-      right: 10%;
-
-      color: white;
-
-      font-family: "Patrick Hand";
-      font-size: 29px;
-      line-height: 1;
-
-      text-align: center;
-
-      transform: rotate(-6deg);
-
-      text-shadow: 0 3px 15px rgba(0,0,0,.4);
-    }
-
-    .sticky-note {
-      position: absolute;
-      right: 8%;
-      bottom: 8%;
-
-      padding: 14px 17px;
-
-      background: #d4e3a1;
-      color: var(--navy);
-
-      box-shadow: 0 12px 30px rgba(0,0,0,.15);
-
-      font-family: "Patrick Hand";
-      font-size: 22px;
-      line-height: 1.05;
-
-      transform: rotate(5deg);
-    }
-
-    /* ==========================
-       INTRO
-    ========================== */
-
-    .intro {
-      padding: 110px 0;
-    }
-
-    .intro-grid {
-      display: grid;
-      grid-template-columns: .85fr 1.15fr;
-
-      gap: 80px;
-      align-items: center;
-    }
-
-    .section-title {
-      color: var(--navy);
-      font-size: clamp(40px, 4.7vw, 64px);
-    }
-
-    .section-copy {
-      margin: 24px 0 28px;
-
-      color: var(--muted);
-      font-size: 17px;
-    }
-
-    .text-link {
-      display: inline-block;
-
-      padding-bottom: 5px;
-
-      border-bottom: 2px solid var(--orange);
-
-      font-weight: 800;
-    }
-
-    /* COLLAGE */
-
-    .collage {
-      position: relative;
-      height: 500px;
-    }
-
-    .photo {
-      position: absolute;
-
-      overflow: hidden;
-
-      background: white;
-
-      box-shadow: 0 18px 40px rgba(17,45,60,.15);
-    }
-
-    .photo-1 {
-      top: 55px;
-      left: 0;
-
-      width: 38%;
-      height: 65%;
-
-      transform: rotate(-4deg);
-    }
-
-    .photo-2 {
-      top: 0;
-      left: 31%;
-
-      width: 47%;
-      height: 82%;
-
-      transform: rotate(2deg);
-    }
-
-    .photo-3 {
-      right: 0;
-      bottom: 15px;
-
-      width: 32%;
-      height: 52%;
-
-      transform: rotate(5deg);
-    }
-
-    .collage-note {
-      position: absolute;
-      z-index: 4;
-
-      bottom: 20px;
-      left: 42%;
-
-      padding: 10px 15px;
-
-      background: #eee1c4;
-
-      box-shadow: 0 8px 25px rgba(0,0,0,.08);
-
-      font-family: "Patrick Hand";
-      font-size: 22px;
-
-      transform: rotate(-3deg);
-    }
-
-    /* ==========================
-       ROUTE
-    ========================== */
-
-    .route {
-      position: relative;
-
-      padding: 95px 0 115px;
-
-      overflow: hidden;
-
-      background: var(--paper-dark);
-    }
-
-    .route-header {
-      max-width: 750px;
-
-      margin: auto auto 65px;
-
-      text-align: center;
-    }
-
-    .route-header p {
-      color: var(--muted);
-    }
-
-    .steps {
-      position: relative;
-
-      display: grid;
-      grid-template-columns: repeat(4,1fr);
-
-      gap: 28px;
-    }
-
-    .steps::before {
-      content: "";
-
-      position: absolute;
-      top: 37px;
-      right: 9%;
-      left: 9%;
-
-      height: 2px;
-
-      background: rgba(55,103,93,.25);
-    }
-
-    .step {
-      position: relative;
-      z-index: 2;
-    }
-
-    .step-icon {
-      width: 76px;
-      height: 76px;
-
-      display: grid;
-      place-items: center;
-
-      margin-bottom: 22px;
-
-      border: 1px solid rgba(55,103,93,.22);
-      border-radius: 50%;
-
-      background: var(--paper);
-
-      color: var(--green);
-
-      font-size: 26px;
-    }
-
-    .step:nth-child(2) .step-icon {
-      background: var(--yellow);
-    }
-
-    .step:nth-child(3) .step-icon {
-      background: #c8ddc7;
-    }
-
-    .step:nth-child(4) .step-icon {
-      background: var(--orange);
-      color: white;
-    }
-
-    .step h3 {
-      margin-bottom: 9px;
-      font-size: 22px;
-    }
-
-    .step p {
-      max-width: 240px;
-
-      margin: 0;
-
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    /* ==========================
-       QUOTE
-    ========================== */
-
-    .quote-section {
-      position: relative;
-
-      min-height: 580px;
-
-      display: flex;
-      align-items: center;
-
-      color: white;
-
-      background:
-        url("https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1900&q=88")
-        center / cover;
-    }
-
-    .quote-section::before {
-      content: "";
-
-      position: absolute;
-      inset: 0;
-
-      background:
-        linear-gradient(
-          90deg,
-          rgba(10,39,50,.92),
-          rgba(10,39,50,.48) 60%,
-          rgba(10,39,50,.08)
-        );
-    }
-
-    .quote-content {
-      position: relative;
-      z-index: 2;
-
-      max-width: 700px;
-
-      padding: 100px 0;
-    }
-
-    .quote-mark {
-      height: 65px;
-
-      color: var(--yellow);
-
-      font-family: Georgia, serif;
-      font-size: 115px;
-      line-height: .8;
-    }
-
-    .quote-content h2 {
-      font-size: clamp(39px,4.5vw,61px);
-      font-weight: 600;
-    }
-
-    .quote-content p {
-      color: rgba(255,255,255,.72);
-    }
-
-    .quote-hand {
-      position: absolute;
-      right: 7%;
-      bottom: 15%;
-
-      color: white;
-
-      font-family: "Patrick Hand";
-      font-size: 28px;
-
-      transform: rotate(6deg);
-    }
-
-    /* ==========================
-       CODE TOM
-    ========================== */
-
-    .code {
-      padding: 105px 0;
-
-      background: white;
-    }
-
-    .code-grid {
-      display: grid;
-      grid-template-columns: .7fr 1.3fr;
-
-      gap: 90px;
-      align-items: center;
-    }
-
-    .code-copy {
-      max-width: 330px;
-
-      color: var(--muted);
-    }
-
-    .tom-letters {
-      margin-top: 35px;
-
-      font-family: "Manrope";
-      font-size: 110px;
-      font-weight: 800;
-
-      line-height: .77;
-      letter-spacing: -10px;
-    }
-
-    .tom-letters span {
-      display: block;
-    }
-
-    .tom-letters span:nth-child(1) {
-      color: var(--green);
-    }
-
-    .tom-letters span:nth-child(2) {
-      color: var(--orange);
-    }
-
-    .tom-letters span:nth-child(3) {
-      color: #d2a72e;
-    }
-
-    .values {
-      border-top: 1px solid var(--line);
-    }
-
-    .value {
-      display: grid;
-      grid-template-columns: 65px 1fr;
-
-      gap: 25px;
-
-      padding: 28px 0;
-
-      border-bottom: 1px solid var(--line);
-    }
-
-    .value-letter {
-      font-family: "Manrope";
-      font-size: 28px;
-      font-weight: 800;
-    }
-
-    .value h3 {
-      margin-bottom: 6px;
-      font-size: 25px;
-    }
-
-    .value p {
-      margin: 0;
-
-      color: var(--muted);
-    }
-
-    /* ==========================
-       OUDERS / SCHOLEN
-    ========================== */
-
-    .audiences {
-      padding: 100px 0;
-    }
-
-    .audience-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-
-      gap: 50px;
-    }
-
-    .audience {
-      display: grid;
-      grid-template-columns: 1.05fr .95fr;
-
-      gap: 25px;
-      align-items: center;
-
-      padding-top: 25px;
-
-      border-top: 1px solid rgba(55,103,93,.35);
-    }
-
-    .audience h3 {
-      font-size: 31px;
-    }
-
-    .audience p {
-      color: var(--muted);
-    }
-
-    .polaroid {
-      height: 310px;
-
-      padding: 9px 9px 32px;
-
-      background: white;
-
-      box-shadow: 0 13px 35px rgba(17,45,60,.15);
-
-      transform: rotate(3deg);
-    }
-
-    .audience:nth-child(2) .polaroid {
-      transform: rotate(-3deg);
-    }
-
-    /* ==========================
-       LOCATIONS
-    ========================== */
-
-    .locations {
-      padding: 95px 0;
-
-      background: var(--paper-dark);
-    }
-
-    .location-grid {
-      display: grid;
-      grid-template-columns: .7fr 1
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TomOntzorgt | Samen ontdekken wat wél kan</title>
+<meta name="description" content="TomOntzorgt biedt jongeren ruimte om talenten te ontdekken, verbinding te maken en zich te ontwikkelen.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&family=Patrick+Hand&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#112e3c;
+  --green:#38675d;
+  --orange:#e96b3d;
+  --yellow:#f1d47c;
+  --paper:#faf8f2;
+  --soft:#f0ece3;
+  --white:#fff;
+  --muted:#66777c;
+  --line:rgba(17,46,60,.14);
+  --max:1220px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"DM Sans",sans-serif;
+  background:var(--paper);
+  color:var(--navy);
+  overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+img{width:100%;height:100%;object-fit:cover;display:block}
+h1,h2,h3{font-family:"Manrope",sans-serif;letter-spacing:-.045em;line-height:1.04}
+p{line-height:1.7}
+.wrap{width:min(var(--max),calc(100% - 44px));margin:auto}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  background:var(--orange);
+  color:white;
+  padding:14px 20px;
+  border-radius:100px;
+  font-weight:700;
+  transition:.2s;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-outline{
+  background:transparent;
+  color:var(--navy);
+  border:1px solid #294652;
+}
+.arrow{
+  width:25px;height:25px;
+  display:grid;place-items:center;
+  border-radius:50%;
+  background:#ffffff25;
+}
+
+/* HEADER */
+
+header{
+  height:76px;
+  background:white;
+  position:sticky;
+  top:0;
+  z-index:100;
+  border-bottom:1px solid #112e3c12;
+}
+.nav{
+  height:100%;
+  display:flex;
+  align-items:center;
+  gap:30px;
+}
+.logo{
+  font:800 23px "Manrope";
+  letter-spacing:-1.5px;
+}
+.logo span{font-weight:500}
+.links{
+  margin-left:auto;
+  display:flex;
+  align-items:center;
+  gap:25px;
+  font-size:13px;
+  font-weight:700;
+}
+.menu{display:none;margin-left:auto;font-size:25px}
+
+/* HERO */
+
+.hero{
+  background:white;
+  min-height:660px;
+}
+.hero-grid{
+  min-height:660px;
+  display:grid;
+  grid-template-columns:46% 54%;
+}
+.hero-copy{
+  padding:75px 50px 80px max(24px,calc((100vw - var(--max))/2));
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.eyebrow{
+  color:var(--green);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-bottom:17px;
+}
+.hero h1{
+  font-size:clamp(50px,5.7vw,82px);
+  max-width:650px;
+}
+.hand{
+  font-family:"Patrick Hand";
+  font-weight:400;
+  color:var(--green);
+  letter-spacing:0;
+}
+.hero-copy>p{
+  color:var(--muted);
+  max-width:540px;
+  font-size:17px;
+  margin:25px 0 29px;
+}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.stats{display:flex;margin-top:37px}
+.stat{
+  padding:0 27px;
+  border-left:1px solid var(--line);
+}
+.stat:first-child{padding-left:0;border:0}
+.stat strong{
+  display:block;
+  font:800 25px "Manrope";
+}
+.stat small{color:var(--muted)}
+
+.hero-image{
+  min-height:660px;
+  position:relative;
+  background:
+    linear-gradient(90deg,#ffffff0d,transparent),
+    url("https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1600&q=85")
+    center/cover;
+  clip-path:polygon(7% 0,100% 0,100% 100%,0 98%,4% 77%,0 58%,4% 38%,1% 20%);
+}
+.hero-write{
+  position:absolute;
+  top:12%;
+  right:10%;
+  color:white;
+  font:29px/1 "Patrick Hand";
+  text-align:center;
+  transform:rotate(-6deg);
+  text-shadow:0 3px 15px #0008;
+}
+.note{
+  position:absolute;
+  right:7%;
+  bottom:8%;
+  background:#d5e5a2;
+  padding:14px 18px;
+  font:22px/1.05 "Patrick Hand";
+  transform:rotate(5deg);
+  box-shadow:0 12px 30px #0003;
+}
+
+/* INTRO */
+
+.intro{padding:105px 0}
+.two{
+  display:grid;
+  grid-template-columns:.85fr 1.15fr;
+  gap:80px;
+  align-items:center;
+}
+h2{font-size:clamp(39px,4.7vw,63px)}
+.copy p{
+  color:var(--muted);
+  font-size:17px;
+  margin:23px 0 27px;
+}
+.text-link{
+  font-weight:800;
+  border-bottom:2px solid var(--orange);
+  padding-bottom:4px;
+}
+.collage{height:480px;position:relative}
+.photo{
+  position:absolute;
+  overflow:hidden;
+  background:white;
+  box-shadow:0 15px 35px #0002;
+}
+.p1{left:0;top:55px;width:38%;height:65%;transform:rotate(-4deg)}
+.p2{left:31%;top:0;width:47%;height:82%;transform:rotate(2deg)}
+.p3{right:0;bottom:15px;width:32%;height:51%;transform:rotate(5deg)}
+.label{
+  position:absolute;
+  z-index:5;
+  left:42%;
+  bottom:15px;
+  background:#eee0c1;
+  padding:10px 15px;
+  font:21px "Patrick Hand";
+  transform:rotate(-3deg);
+}
+
+/* ROUTE */
+
+.route{
+  background:var(--soft);
+  padding:90px 0 105px;
+}
+.route-head{
+  text-align:center;
+  max-width:760px;
+  margin:0 auto 60px;
+}
+.route-head p{color:var(--muted);margin-top:15px}
+.steps{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:25px;
+  position:relative;
+}
+.steps:before{
+  content:"";
+  position:absolute;
+  top:36px;left:8%;right:8%;
+  height:2px;
+  background:#38675d3b;
+}
+.step{position:relative;z-index:2}
+.icon{
+  width:73px;height:73px;
+  display:grid;place-items:center;
+  border-radius:50%;
+  background:var(--paper);
+  border:1px solid #38675d30;
+  font-size:26px;
+  margin-bottom:20px;
+}
+.step:nth-child(2) .icon{background:var(--yellow)}
+.step:nth-child(3) .icon{background:#c9dec7}
+.step:nth-child(4) .icon{background:var(--orange);color:white}
+.step h3{font-size:21px;margin-bottom:8px}
+.step p{color:var(--muted);font-size:14px;max-width:240px}
+
+/* QUOTE */
+
+.quote{
+  min-height:560px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  color:white;
+  background:url("https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1900&q=85") center/cover;
+}
+.quote:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,#102e3cec,#102e3c55 65%,transparent);
+}
+.quote-content{
+  position:relative;
+  z-index:2;
+  max-width:700px;
+}
+.quote-mark{
+  color:var(--yellow);
+  font:110px/.5 Georgia;
+}
+.quote h2{font-size:clamp(38px,4.5vw,60px);font-weight:600}
+.quote p{color:#ffffffb5;margin-top:22px}
+
+/* CODE TOM */
+
+.code{background:white;padding:100px 0}
+.code-grid{
+  display:grid;
+  grid-template-columns:.7fr 1.3fr;
+  gap:85px;
+  align-items:center;
+}
+.code-intro p{color:var(--muted);margin-top:20px;max-width:330px}
+.tom{
+  font:800 105px/.76 "Manrope";
+  letter-spacing:-9px;
+  margin-top:30px;
+}
+.tom span{display:block}
+.tom span:nth-child(1){color:var(--green)}
+.tom span:nth-child(2){color:var(--orange)}
+.tom span:nth-child(3){color:#d1a72f}
+
+.values{border-top:1px solid var(--line)}
+.value{
+  display:grid;
+  grid-template-columns:60px 1fr;
+  gap:22px;
+  padding:26px 0;
+  border-bottom:1px solid var(--line);
+}
+.value>b{font:800 27px "Manrope"}
+.value h3{font-size:24px}
+.value p{color:var(--muted);margin-top:6px}
+
+/* PARENTS + SCHOOLS */
+
+.audiences{padding:95px 0}
+.audience-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:50px;
+}
+.audience{
+  display:grid;
+  grid-template-columns:1fr .8fr;
+  align-items:center;
+  gap:25px;
+  padding-top:23px;
+  border-top:1px solid #38675d55;
+}
+.audience h3{font-size:30px}
+.audience p{color:var(--muted);margin:15px 0}
+.polaroid{
+  height:280px;
+  padding:8px 8px 28px;
+  background:white;
+  box-shadow:0 12px 30px #0002;
+  transform:rotate(3deg);
+}
+.audience:last-child .polaroid{transform:rotate(-3deg)}
+
+/* LOCATIONS */
+
+.locations{
+  padding:90px 0;
+  background:var(--soft);
+}
+.location-grid{
+  display:grid;
+  grid-template-columns:.75fr 1.25fr;
+  gap:70px;
+  align-items:center;
+}
+.location-copy p{color:var(--muted);margin:20px 0 25px}
+.map{
+  min-height:390px;
+  position:relative;
+  border-radius:46% 54% 48% 52%;
+  background:#dfe5dc;
+  overflow:hidden;
+  display:grid;
+  place-items:center;
+}
+.map:before{
+  content:"UTRECHT";
+  font:800 36px "Manrope";
+  letter-spacing:8px;
+  color:#38675d24;
+}
+.pin{
+  position:absolute;
+  width:17px;height:17px;
+  border-radius:50%;
+  background:var(--green);
+  border:4px solid white;
+  box-shadow:0 3px 10px #0003;
+}
+.pin:after{
+  position:absolute;
+  left:18px;
+  top:-5px;
+  white-space:nowrap;
+  font-size:13px;
+  font-weight:700;
+}
+.pin1{left:34%;top:45%}.pin1:after{content:"Utrecht"}
+.pin2{left:53%;top:30%}.pin2:after{content:"De Bilt"}
+.pin3{left:64%;top:55%}.pin3:after{content:"Zeist"}
+.pin4{left:22%;top:25%}.pin4:after{content:"Regio Utrecht"}
+
+/* CTA */
+
+.cta{
+  min-height:430px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  color:white;
+  background:url("https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1900&q=85") center 65%/cover;
+}
+.cta:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,#102e3cf2,#102e3c66);
+}
+.cta-content{
+  position:relative;
+  z-index:2;
+  max-width:650px;
+}
+.cta h2{font-size:clamp(42px,5vw,65px)}
+.cta p{color:#ffffffc9;margin:20px 0 27px}
+.cta .button-outline{color:white;border-color:#ffffff88}
+
+/* FOOTER */
+
+footer{
+  background:#102d3b;
+  color:white;
+  padding:65px 0 25px;
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr 1fr;
+  gap:55px;
+}
+footer .logo{font-size:24px;margin-bottom:18px}
+.footer-hand{
+  font:23px "Patrick Hand";
+  color:#ffffffc0;
+  transform:rotate(-3deg);
+}
+footer h4{
+  font-size:14px;
+  margin-bottom:15px;
+  letter-spacing:0;
+}
+footer a,footer p{
+  display:block;
+  color:#ffffffa5;
+  font-size:13px;
+  line-height:1.95;
+}
+.footer-bottom{
+  border-top:1px solid #ffffff20;
+  margin-top:48px;
+  padding-top:20px;
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  color:#ffffff70;
+  font-size:11px;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+  .links{display:none}
+  .menu{display:block}
+
+  .hero-grid{grid-template-columns:1fr}
+  .hero-copy{padding:70px 24px}
+  .hero-image{min-height:500px;clip-path:none}
+
+  .two,.code-grid,.location-grid{grid-template-columns:1fr}
+  .collage{height:450px}
+
+  .steps{grid-template-columns:1fr 1fr;gap:45px}
+  .steps:before{display:none}
+
+  .audience-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+
+@media(max-width:600px){
+  .wrap{width:calc(100% - 30px)}
+
+  header{height:68px}
+  .logo{font-size:20px}
+
+  .hero h1{font-size:49px}
+  .hero-image{min-height:400px}
+  .hero-write{font-size:23px}
+
+  .stats{justify-content:space-between}
+  .stat{padding:0 13px;min-width:auto}
+
+  .intro{padding:75px 0}
+  .collage{height:350px}
+
+  .route{padding:75px 0}
+  .steps{grid-template-columns:1fr}
+
+  .quote{min-height:530px}
+
+  .tom{font-size:88px}
+
+  .audience{grid-template-columns:1fr}
+  .polaroid{height:330px}
+
+  .map{min-height:330px}
+
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{display:block}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap nav">
+
+    <a class="logo" href="#">
+      TOM<span>ONTZORGT</span>
+    </a>
+
+    <nav class="links">
+      <a href="#wat">Wat we doen</a>
+      <a href="#jongeren">Voor jongeren</a>
+      <a href="#ouders">Voor ouders</a>
+      <a href="#scholen">Scholen & partners</a>
+      <a href="#locaties">Locaties</a>
+      <a href="#over">Over Tom</a>
+
+      <a href="#contact" class="btn">
+        Kennismaken
+        <span class="arrow">→</span>
+      </a>
+    </nav>
+
+    <div class="menu">☰</div>
+
+  </div>
+</header>
+
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <div class="hero-grid">
+
+    <div class="hero-copy">
+
+      <div class="eyebrow">
+        Samen talenten ontdekken
+      </div>
+
+      <h1>
+        Een plek waar je niet hoeft uit te leggen
+        <span class="hand">wie je bent
