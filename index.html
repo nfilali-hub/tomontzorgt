@@ -1,562 +1,3127 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TomOntzorgt | Samen ontdekken wat wél kan</title>
-<meta name="description" content="TomOntzorgt biedt jongeren ruimte om talenten te ontdekken, verbinding te maken en zich te ontwikkelen.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&family=Patrick+Hand&display=swap" rel="stylesheet">
+  <title>TomOntzorgt | Begeleiden met elkaar</title>
+  <meta
+    name="description"
+    content="TomOntzorgt biedt jongeren een veilige plek om talenten te ontdekken, vriendschappen op te bouwen en zich op hun eigen manier te ontwikkelen."
+  >
 
-<style>
-:root{
-  --navy:#112e3c;
-  --green:#38675d;
-  --orange:#e96b3d;
-  --yellow:#f1d47c;
-  --paper:#faf8f2;
-  --soft:#f0ece3;
-  --white:#fff;
-  --muted:#66777c;
-  --line:rgba(17,46,60,.14);
-  --max:1220px;
-}
+  <meta name="theme-color" content="#102f3d">
 
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  font-family:"DM Sans",sans-serif;
-  background:var(--paper);
-  color:var(--navy);
-  overflow-x:hidden;
-}
-a{text-decoration:none;color:inherit}
-img{width:100%;height:100%;object-fit:cover;display:block}
-h1,h2,h3{font-family:"Manrope",sans-serif;letter-spacing:-.045em;line-height:1.04}
-p{line-height:1.7}
-.wrap{width:min(var(--max),calc(100% - 44px));margin:auto}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Patrick+Hand&display=swap"
+    rel="stylesheet"
+  >
 
-.btn{
-  display:inline-flex;
-  align-items:center;
-  gap:12px;
-  background:var(--orange);
-  color:white;
-  padding:14px 20px;
-  border-radius:100px;
-  font-weight:700;
-  transition:.2s;
-}
-.btn:hover{transform:translateY(-2px)}
-.btn-outline{
-  background:transparent;
-  color:var(--navy);
-  border:1px solid #294652;
-}
-.arrow{
-  width:25px;height:25px;
-  display:grid;place-items:center;
-  border-radius:50%;
-  background:#ffffff25;
-}
+  <style>
+    /* =========================================================
+       BASIS
+    ========================================================= */
 
-/* HEADER */
+    :root {
+      --navy: #102f3d;
+      --navy-2: #173e49;
+      --navy-3: #214b52;
 
-header{
-  height:76px;
-  background:white;
-  position:sticky;
-  top:0;
-  z-index:100;
-  border-bottom:1px solid #112e3c12;
-}
-.nav{
-  height:100%;
-  display:flex;
-  align-items:center;
-  gap:30px;
-}
-.logo{
-  font:800 23px "Manrope";
-  letter-spacing:-1.5px;
-}
-.logo span{font-weight:500}
-.links{
-  margin-left:auto;
-  display:flex;
-  align-items:center;
-  gap:25px;
-  font-size:13px;
-  font-weight:700;
-}
-.menu{display:none;margin-left:auto;font-size:25px}
+      --green: #3d6e63;
+      --green-dark: #315a52;
+      --green-soft: #dbe8d9;
 
-/* HERO */
+      --orange: #ef6c3b;
+      --orange-dark: #d95a2f;
 
-.hero{
-  background:white;
-  min-height:660px;
-}
-.hero-grid{
-  min-height:660px;
-  display:grid;
-  grid-template-columns:46% 54%;
-}
-.hero-copy{
-  padding:75px 50px 80px max(24px,calc((100vw - var(--max))/2));
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-}
-.eyebrow{
-  color:var(--green);
-  font-size:12px;
-  font-weight:800;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  margin-bottom:17px;
-}
-.hero h1{
-  font-size:clamp(50px,5.7vw,82px);
-  max-width:650px;
-}
-.hand{
-  font-family:"Patrick Hand";
-  font-weight:400;
-  color:var(--green);
-  letter-spacing:0;
-}
-.hero-copy>p{
-  color:var(--muted);
-  max-width:540px;
-  font-size:17px;
-  margin:25px 0 29px;
-}
-.actions{display:flex;gap:10px;flex-wrap:wrap}
-.stats{display:flex;margin-top:37px}
-.stat{
-  padding:0 27px;
-  border-left:1px solid var(--line);
-}
-.stat:first-child{padding-left:0;border:0}
-.stat strong{
-  display:block;
-  font:800 25px "Manrope";
-}
-.stat small{color:var(--muted)}
+      --yellow: #efd36f;
+      --lime: #d8e59e;
 
-.hero-image{
-  min-height:660px;
-  position:relative;
-  background:
-    linear-gradient(90deg,#ffffff0d,transparent),
-    url("https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1600&q=85")
-    center/cover;
-  clip-path:polygon(7% 0,100% 0,100% 100%,0 98%,4% 77%,0 58%,4% 38%,1% 20%);
-}
-.hero-write{
-  position:absolute;
-  top:12%;
-  right:10%;
-  color:white;
-  font:29px/1 "Patrick Hand";
-  text-align:center;
-  transform:rotate(-6deg);
-  text-shadow:0 3px 15px #0008;
-}
-.note{
-  position:absolute;
-  right:7%;
-  bottom:8%;
-  background:#d5e5a2;
-  padding:14px 18px;
-  font:22px/1.05 "Patrick Hand";
-  transform:rotate(5deg);
-  box-shadow:0 12px 30px #0003;
-}
+      --paper: #fbf8f0;
+      --paper-2: #f2eee5;
+      --white: #ffffff;
 
-/* INTRO */
+      --text: #153442;
+      --muted: #64757b;
 
-.intro{padding:105px 0}
-.two{
-  display:grid;
-  grid-template-columns:.85fr 1.15fr;
-  gap:80px;
-  align-items:center;
-}
-h2{font-size:clamp(39px,4.7vw,63px)}
-.copy p{
-  color:var(--muted);
-  font-size:17px;
-  margin:23px 0 27px;
-}
-.text-link{
-  font-weight:800;
-  border-bottom:2px solid var(--orange);
-  padding-bottom:4px;
-}
-.collage{height:480px;position:relative}
-.photo{
-  position:absolute;
-  overflow:hidden;
-  background:white;
-  box-shadow:0 15px 35px #0002;
-}
-.p1{left:0;top:55px;width:38%;height:65%;transform:rotate(-4deg)}
-.p2{left:31%;top:0;width:47%;height:82%;transform:rotate(2deg)}
-.p3{right:0;bottom:15px;width:32%;height:51%;transform:rotate(5deg)}
-.label{
-  position:absolute;
-  z-index:5;
-  left:42%;
-  bottom:15px;
-  background:#eee0c1;
-  padding:10px 15px;
-  font:21px "Patrick Hand";
-  transform:rotate(-3deg);
-}
+      --line: rgba(16, 47, 61, 0.14);
+      --shadow: 0 20px 50px rgba(16, 47, 61, 0.14);
 
-/* ROUTE */
+      --max: 1240px;
+    }
 
-.route{
-  background:var(--soft);
-  padding:90px 0 105px;
-}
-.route-head{
-  text-align:center;
-  max-width:760px;
-  margin:0 auto 60px;
-}
-.route-head p{color:var(--muted);margin-top:15px}
-.steps{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:25px;
-  position:relative;
-}
-.steps:before{
-  content:"";
-  position:absolute;
-  top:36px;left:8%;right:8%;
-  height:2px;
-  background:#38675d3b;
-}
-.step{position:relative;z-index:2}
-.icon{
-  width:73px;height:73px;
-  display:grid;place-items:center;
-  border-radius:50%;
-  background:var(--paper);
-  border:1px solid #38675d30;
-  font-size:26px;
-  margin-bottom:20px;
-}
-.step:nth-child(2) .icon{background:var(--yellow)}
-.step:nth-child(3) .icon{background:#c9dec7}
-.step:nth-child(4) .icon{background:var(--orange);color:white}
-.step h3{font-size:21px;margin-bottom:8px}
-.step p{color:var(--muted);font-size:14px;max-width:240px}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-/* QUOTE */
+    html {
+      scroll-behavior: smooth;
+    }
 
-.quote{
-  min-height:560px;
-  position:relative;
-  display:flex;
-  align-items:center;
-  color:white;
-  background:url("https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1900&q=85") center/cover;
-}
-.quote:before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(90deg,#102e3cec,#102e3c55 65%,transparent);
-}
-.quote-content{
-  position:relative;
-  z-index:2;
-  max-width:700px;
-}
-.quote-mark{
-  color:var(--yellow);
-  font:110px/.5 Georgia;
-}
-.quote h2{font-size:clamp(38px,4.5vw,60px);font-weight:600}
-.quote p{color:#ffffffb5;margin-top:22px}
+    body {
+      width: 100%;
+      overflow-x: hidden;
+      background: var(--paper);
+      color: var(--text);
+      font-family: "DM Sans", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
 
-/* CODE TOM */
+    body.menu-open {
+      overflow: hidden;
+    }
 
-.code{background:white;padding:100px 0}
-.code-grid{
-  display:grid;
-  grid-template-columns:.7fr 1.3fr;
-  gap:85px;
-  align-items:center;
-}
-.code-intro p{color:var(--muted);margin-top:20px;max-width:330px}
-.tom{
-  font:800 105px/.76 "Manrope";
-  letter-spacing:-9px;
-  margin-top:30px;
-}
-.tom span{display:block}
-.tom span:nth-child(1){color:var(--green)}
-.tom span:nth-child(2){color:var(--orange)}
-.tom span:nth-child(3){color:#d1a72f}
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-.values{border-top:1px solid var(--line)}
-.value{
-  display:grid;
-  grid-template-columns:60px 1fr;
-  gap:22px;
-  padding:26px 0;
-  border-bottom:1px solid var(--line);
-}
-.value>b{font:800 27px "Manrope"}
-.value h3{font-size:24px}
-.value p{color:var(--muted);margin-top:6px}
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-/* PARENTS + SCHOOLS */
+    button {
+      font: inherit;
+    }
 
-.audiences{padding:95px 0}
-.audience-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:50px;
-}
-.audience{
-  display:grid;
-  grid-template-columns:1fr .8fr;
-  align-items:center;
-  gap:25px;
-  padding-top:23px;
-  border-top:1px solid #38675d55;
-}
-.audience h3{font-size:30px}
-.audience p{color:var(--muted);margin:15px 0}
-.polaroid{
-  height:280px;
-  padding:8px 8px 28px;
-  background:white;
-  box-shadow:0 12px 30px #0002;
-  transform:rotate(3deg);
-}
-.audience:last-child .polaroid{transform:rotate(-3deg)}
+    h1,
+    h2,
+    h3,
+    h4 {
+      margin: 0;
+      font-family: "Manrope", Arial, sans-serif;
+      line-height: 1.03;
+      letter-spacing: -0.045em;
+    }
 
-/* LOCATIONS */
+    p {
+      line-height: 1.7;
+    }
 
-.locations{
-  padding:90px 0;
-  background:var(--soft);
-}
-.location-grid{
-  display:grid;
-  grid-template-columns:.75fr 1.25fr;
-  gap:70px;
-  align-items:center;
-}
-.location-copy p{color:var(--muted);margin:20px 0 25px}
-.map{
-  min-height:390px;
-  position:relative;
-  border-radius:46% 54% 48% 52%;
-  background:#dfe5dc;
-  overflow:hidden;
-  display:grid;
-  place-items:center;
-}
-.map:before{
-  content:"UTRECHT";
-  font:800 36px "Manrope";
-  letter-spacing:8px;
-  color:#38675d24;
-}
-.pin{
-  position:absolute;
-  width:17px;height:17px;
-  border-radius:50%;
-  background:var(--green);
-  border:4px solid white;
-  box-shadow:0 3px 10px #0003;
-}
-.pin:after{
-  position:absolute;
-  left:18px;
-  top:-5px;
-  white-space:nowrap;
-  font-size:13px;
-  font-weight:700;
-}
-.pin1{left:34%;top:45%}.pin1:after{content:"Utrecht"}
-.pin2{left:53%;top:30%}.pin2:after{content:"De Bilt"}
-.pin3{left:64%;top:55%}.pin3:after{content:"Zeist"}
-.pin4{left:22%;top:25%}.pin4:after{content:"Regio Utrecht"}
+    .container {
+      width: min(var(--max), calc(100% - 48px));
+      margin: 0 auto;
+    }
 
-/* CTA */
+    .eyebrow {
+      margin-bottom: 16px;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+    }
 
-.cta{
-  min-height:430px;
-  position:relative;
-  display:flex;
-  align-items:center;
-  color:white;
-  background:url("https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1900&q=85") center 65%/cover;
-}
-.cta:before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(90deg,#102e3cf2,#102e3c66);
-}
-.cta-content{
-  position:relative;
-  z-index:2;
-  max-width:650px;
-}
-.cta h2{font-size:clamp(42px,5vw,65px)}
-.cta p{color:#ffffffc9;margin:20px 0 27px}
-.cta .button-outline{color:white;border-color:#ffffff88}
+    .eyebrow.light {
+      color: #c9dfd6;
+    }
 
-/* FOOTER */
+    .section-title {
+      color: var(--navy);
+      font-size: clamp(40px, 4.6vw, 64px);
+    }
 
-footer{
-  background:#102d3b;
-  color:white;
-  padding:65px 0 25px;
-}
-.footer-grid{
-  display:grid;
-  grid-template-columns:1.4fr 1fr 1fr 1fr;
-  gap:55px;
-}
-footer .logo{font-size:24px;margin-bottom:18px}
-.footer-hand{
-  font:23px "Patrick Hand";
-  color:#ffffffc0;
-  transform:rotate(-3deg);
-}
-footer h4{
-  font-size:14px;
-  margin-bottom:15px;
-  letter-spacing:0;
-}
-footer a,footer p{
-  display:block;
-  color:#ffffffa5;
-  font-size:13px;
-  line-height:1.95;
-}
-.footer-bottom{
-  border-top:1px solid #ffffff20;
-  margin-top:48px;
-  padding-top:20px;
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-  color:#ffffff70;
-  font-size:11px;
-}
+    .section-copy {
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.75;
+    }
 
-/* MOBILE */
+    .handwritten {
+      font-family: "Patrick Hand", cursive;
+      letter-spacing: 0;
+    }
 
-@media(max-width:900px){
-  .links{display:none}
-  .menu{display:block}
+    .orange {
+      color: var(--orange);
+    }
 
-  .hero-grid{grid-template-columns:1fr}
-  .hero-copy{padding:70px 24px}
-  .hero-image{min-height:500px;clip-path:none}
+    .green {
+      color: var(--green);
+    }
 
-  .two,.code-grid,.location-grid{grid-template-columns:1fr}
-  .collage{height:450px}
+    /* =========================================================
+       KNOPPEN
+    ========================================================= */
 
-  .steps{grid-template-columns:1fr 1fr;gap:45px}
-  .steps:before{display:none}
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
 
-  .audience-grid{grid-template-columns:1fr}
-  .footer-grid{grid-template-columns:1fr 1fr}
-}
+      min-height: 49px;
+      padding: 0 20px;
 
-@media(max-width:600px){
-  .wrap{width:calc(100% - 30px)}
+      border: none;
+      border-radius: 999px;
 
-  header{height:68px}
-  .logo{font-size:20px}
+      background: var(--orange);
+      color: var(--white);
 
-  .hero h1{font-size:49px}
-  .hero-image{min-height:400px}
-  .hero-write{font-size:23px}
+      font-size: 14px;
+      font-weight: 700;
 
-  .stats{justify-content:space-between}
-  .stat{padding:0 13px;min-width:auto}
+      cursor: pointer;
 
-  .intro{padding:75px 0}
-  .collage{height:350px}
+      transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+    }
 
-  .route{padding:75px 0}
-  .steps{grid-template-columns:1fr}
+    .button:hover {
+      transform: translateY(-2px);
+      background: var(--orange-dark);
+      box-shadow: 0 10px 25px rgba(239, 108, 59, 0.22);
+    }
 
-  .quote{min-height:530px}
+    .button-circle {
+      width: 26px;
+      height: 26px;
 
-  .tom{font-size:88px}
+      display: grid;
+      place-items: center;
 
-  .audience{grid-template-columns:1fr}
-  .polaroid{height:330px}
+      flex: 0 0 auto;
 
-  .map{min-height:330px}
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.18);
 
-  .footer-grid{grid-template-columns:1fr}
-  .footer-bottom{display:block}
-}
-</style>
+      font-size: 15px;
+    }
+
+    .button-outline {
+      border: 1px solid rgba(16, 47, 61, 0.35);
+      background: transparent;
+      color: var(--navy);
+    }
+
+    .button-outline:hover {
+      background: var(--navy);
+      color: var(--white);
+      box-shadow: none;
+    }
+
+    .text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+
+      padding-bottom: 5px;
+
+      border-bottom: 2px solid var(--orange);
+
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    /* =========================================================
+       HEADER
+    ========================================================= */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+
+      height: 76px;
+
+      background: rgba(255, 255, 255, 0.97);
+      border-bottom: 1px solid rgba(16, 47, 61, 0.08);
+
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .header-inner {
+      height: 100%;
+
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .logo {
+      flex: 0 0 auto;
+
+      color: var(--navy);
+
+      font-family: "Manrope", sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -1.7px;
+    }
+
+    .logo span {
+      font-weight: 500;
+    }
+
+    .desktop-nav {
+      margin-left: auto;
+
+      display: flex;
+      align-items: center;
+      gap: 26px;
+
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .desktop-nav > a:not(.button) {
+      position: relative;
+      padding: 29px 0;
+    }
+
+    .desktop-nav > a:not(.button)::after {
+      content: "";
+
+      position: absolute;
+      right: 0;
+      bottom: 20px;
+      left: 0;
+
+      height: 2px;
+
+      background: var(--orange);
+
+      transform: scaleX(0);
+      transform-origin: left;
+
+      transition: transform 0.2s ease;
+    }
+
+    .desktop-nav > a:not(.button):hover::after {
+      transform: scaleX(1);
+    }
+
+    .menu-button {
+      display: none;
+
+      width: 44px;
+      height: 44px;
+
+      margin-left: auto;
+
+      border: none;
+      border-radius: 50%;
+
+      background: var(--paper-2);
+      color: var(--navy);
+
+      font-size: 22px;
+
+      cursor: pointer;
+    }
+
+    .mobile-nav {
+      display: none;
+    }
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .hero-grid {
+      min-height: 670px;
+
+      display: grid;
+      grid-template-columns: 45% 55%;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 3;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      padding:
+        78px
+        48px
+        88px
+        max(24px, calc((100vw - var(--max)) / 2));
+    }
+
+    .hero-title {
+      max-width: 650px;
+
+      color: var(--navy);
+
+      font-size: clamp(51px, 5.7vw, 84px);
+    }
+
+    .hero-title-hand {
+      position: relative;
+
+      display: inline-block;
+
+      color: var(--green);
+
+      font-family: "Patrick Hand", cursive;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+
+    .hero-title-hand::after {
+      content: "";
+
+      position: absolute;
+      right: 0;
+      bottom: -4px;
+      left: 0;
+
+      height: 6px;
+
+      border-radius: 50%;
+
+      background: var(--yellow);
+
+      transform: rotate(-1deg);
+
+      z-index: -1;
+    }
+
+    .hero-description {
+      max-width: 555px;
+
+      margin: 26px 0 30px;
+
+      color: var(--muted);
+
+      font-size: 17px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 11px;
+    }
+
+    .hero-stats {
+      display: flex;
+      align-items: stretch;
+
+      margin-top: 37px;
+    }
+
+    .hero-stat {
+      min-width: 112px;
+      padding: 0 27px;
+
+      border-left: 1px solid var(--line);
+    }
+
+    .hero-stat:first-child {
+      padding-left: 0;
+      border-left: 0;
+    }
+
+    .hero-stat strong {
+      display: block;
+
+      color: var(--navy);
+
+      font-family: "Manrope", sans-serif;
+      font-size: 25px;
+      font-weight: 800;
+    }
+
+    .hero-stat span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .hero-visual {
+      position: relative;
+
+      min-height: 670px;
+
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,0.05),
+          rgba(255,255,255,0)
+        ),
+        url("https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1800&q=88")
+        center / cover no-repeat;
+
+      clip-path: polygon(
+        7% 0,
+        100% 0,
+        100% 100%,
+        0 97%,
+        4% 82%,
+        0 67%,
+        4% 50%,
+        0 32%,
+        5% 15%
+      );
+    }
+
+    .hero-visual::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(16, 47, 61, 0.14),
+          transparent 35%
+        );
+    }
+
+    .hero-writing {
+      position: absolute;
+      z-index: 3;
+
+      top: 12%;
+      right: 10%;
+
+      width: 190px;
+
+      color: white;
+
+      font-family: "Patrick Hand", cursive;
+      font-size: 29px;
+      line-height: 1;
+
+      text-align: center;
+
+      transform: rotate(-7deg);
+
+      text-shadow: 0 3px 16px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-writing-arrow {
+      display: block;
+
+      margin-top: 4px;
+
+      font-size: 40px;
+    }
+
+    .hero-note {
+      position: absolute;
+      z-index: 4;
+
+      right: 7%;
+      bottom: 8%;
+
+      padding: 14px 17px;
+
+      background: var(--lime);
+      color: var(--navy);
+
+      box-shadow: 0 15px 35px rgba(0,0,0,.15);
+
+      font-family: "Patrick Hand", cursive;
+      font-size: 22px;
+      line-height: 1.05;
+
+      transform: rotate(5deg);
+    }
+
+    /* =========================================================
+       INTRO / COLLAGE
+    ========================================================= */
+
+    .intro {
+      position: relative;
+
+      padding: 108px 0 115px;
+
+      overflow: hidden;
+    }
+
+    .intro::before {
+      content: "";
+
+      position: absolute;
+      top: -35px;
+      right: -5%;
+      left: -5%;
+
+      height: 70px;
+
+      border-radius: 50%;
+
+      background: var(--paper);
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: .82fr 1.18fr;
+      align-items: center;
+      gap: 80px;
+    }
+
+    .intro-copy {
+      position: relative;
+      z-index: 4;
+    }
+
+    .intro-copy p {
+      margin: 24px 0 28px;
+
+      color: var(--muted);
+
+      font-size: 17px;
+    }
+
+    .green-underline {
+      position: relative;
+
+      display: inline-block;
+
+      color: var(--green);
+    }
+
+    .green-underline::after {
+      content: "";
+
+      position: absolute;
+      right: -2px;
+      bottom: -4px;
+      left: -2px;
+
+      height: 6px;
+
+      border-radius: 50%;
+
+      background: var(--yellow);
+
+      transform: rotate(-1deg);
+
+      z-index: -1;
+    }
+
+    .collage {
+      position: relative;
+
+      height: 500px;
+    }
+
+    .collage-photo {
+      position: absolute;
+
+      overflow: hidden;
+
+      background: white;
+
+      box-shadow: var(--shadow);
+    }
+
+    .collage-photo::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      border: 7px solid white;
+
+      pointer-events: none;
+    }
+
+    .photo-a {
+      top: 55px;
+      left: 0;
+
+      width: 38%;
+      height: 64%;
+
+      transform: rotate(-4deg);
+    }
+
+    .photo-b {
+      top: 0;
+      left: 31%;
+
+      width: 48%;
+      height: 82%;
+
+      transform: rotate(2deg);
+    }
+
+    .photo-c {
+      right: 0;
+      bottom: 16px;
+
+      width: 32%;
+      height: 52%;
+
+      transform: rotate(5deg);
+    }
+
+    .collage-label {
+      position: absolute;
+      z-index: 8;
+
+      left: 42%;
+      bottom: 12px;
+
+      padding: 10px 15px;
+
+      background: #eee1c2;
+
+      box-shadow: 0 8px 25px rgba(0,0,0,.08);
+
+      font-family: "Patrick Hand", cursive;
+      font-size: 21px;
+
+      transform: rotate(-3deg);
+    }
+
+    .collage-writing {
+      position: absolute;
+      z-index: 8;
+
+      top: 20px;
+      right: -5px;
+
+      width: 145px;
+
+      color: var(--navy);
+
+      font-family: "Patrick Hand", cursive;
+      font-size: 21px;
+      line-height: 1.1;
+
+      transform: rotate(6deg);
+    }
+
+    /* =========================================================
+       ROUTE
+    ========================================================= */
+
+    .route {
+      position: relative;
+
+      padding: 90px 0 105px;
+
+      overflow: hidden;
+
+      background: var(--paper-2);
+    }
+
+    .route::before {
+      content: "";
+
+      position: absolute;
+      top: -36px;
+      right: -6%;
+      left: -6%;
+
+      height: 70px;
+
+      border-radius: 50%;
+
+      background: var(--paper);
+    }
+
+    .route-heading {
+      max-width: 750px;
+
+      margin: 0 auto 64px;
+
+      text-align: center;
+    }
+
+    .route-heading p {
+      margin-top: 16px;
+
+      color: var(--muted);
+    }
+
+    .route-steps {
+      position: relative;
+
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+
+      gap: 28px;
+    }
+
+    .route-line {
+      position: absolute;
+
+      top: 29px;
+      right: 7%;
+      left: 7%;
+
+      height: 58px;
+
+      pointer-events: none;
+    }
+
+    .route-step {
+      position: relative;
+      z-index: 2;
+    }
+
+    .route-icon {
+      width: 70px;
+      height: 70px;
+
+      display: grid;
+      place-items: center;
+
+      margin-bottom: 22px;
+
+      border: 1px solid rgba(61, 110, 99, 0.2);
+      border-radius: 50%;
+
+      background: var(--paper);
+
+      color: var(--green);
+
+      font-size: 26px;
+    }
+
+    .route-step:nth-of-type(3) .route-icon {
+      background: var(--yellow);
+    }
+
+    .route-step:nth-of-type(4) .route-icon {
+      background: #c9dec6;
+    }
+
+    .route-step:nth-of-type(5) .route-icon {
+      background: var(--orange);
+      color: white;
+    }
+
+    .route-step h3 {
+      margin-bottom: 8px;
+
+      color: var(--navy);
+
+      font-size: 22px;
+    }
+
+    .route-step p {
+      max-width: 235px;
+
+      color: var(--muted);
+
+      font-size: 14px;
+    }
+
+    /* =========================================================
+       QUOTE
+    ========================================================= */
+
+    .quote-section {
+      position: relative;
+
+      min-height: 590px;
+
+      display: flex;
+      align-items: center;
+
+      overflow: hidden;
+
+      color: white;
+
+      background:
+        url("https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1900&q=88")
+        center / cover no-repeat;
+    }
+
+    .quote-section::before {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(10, 42, 52, .94),
+          rgba(10, 42, 52, .52) 58%,
+          rgba(10, 42, 52, .08)
+        );
+    }
+
+    .quote-content {
+      position: relative;
+      z-index: 2;
+
+      max-width: 705px;
+
+      padding: 100px 0;
+    }
+
+    .quote-mark {
+      height: 62px;
+
+      color: var(--yellow);
+
+      font-family: Georgia, serif;
+      font-size: 115px;
+      line-height: .8;
+    }
+
+    .quote-content h2 {
+      font-size: clamp(39px, 4.5vw, 62px);
+      font-weight: 600;
+    }
+
+    .quote-content p {
+      margin-top: 24px;
+
+      color: rgba(255,255,255,.75);
+    }
+
+    .quote-handwriting {
+      position: absolute;
+      z-index: 3;
+
+      right: 6%;
+      bottom: 16%;
+
+      color: white;
+
+      font-family: "Patrick Hand", cursive;
+      font-size: 28px;
+
+      transform: rotate(6deg);
+    }
+
+    /* =========================================================
+       CODE TOM
+    ========================================================= */
+
+    .code-section {
+      position: relative;
+
+      padding: 105px 0;
+
+      background: white;
+    }
+
+    .code-grid {
+      display: grid;
+      grid-template-columns: .7fr 1.3fr;
+      align-items: center;
+      gap: 90px;
+    }
+
+    .code-intro p {
+      max-width: 330px;
+
+      margin-top: 20px;
+
+      color: var(--muted);
+    }
+
+    .tom-letters {
+      margin-top: 32px;
+
+      font-family: "Manrope", sans-serif;
+      font-size: 108px;
+      font-weight: 800;
+
+      line-height: .77;
+      letter-spacing: -10px;
+    }
+
+    .tom-letters span {
+      display: block;
+    }
+
+    .tom-letters span:nth-child(1) {
+      color: var(--green);
+    }
+
+    .tom-letters span:nth-child(2) {
+      color: var(--orange);
+    }
+
+    .tom-letters span:nth-child(3) {
+      color: #d2a72f;
+    }
+
+    .values {
+      border-top: 1px solid var(--line);
+    }
+
+    .value {
+      display: grid;
+      grid-template-columns: 62px 1fr;
+      gap: 23px;
+
+      padding: 27px 0;
+
+      border-bottom: 1px solid var(--line);
+    }
+
+    .value-letter {
+      color: var(--navy);
+
+      font-family: "Manrope", sans-serif;
+      font-size: 29px;
+      font-weight: 800;
+    }
+
+    .value h3 {
+      margin-bottom: 6px;
+
+      font-size: 24px;
+    }
+
+    .value p {
+      color: var(--muted);
+    }
+
+    .code-note {
+      position: absolute;
+
+      right: 5%;
+      top: 38%;
+
+      padding: 14px 18px;
+
+      background: #eee3ca;
+
+      box-shadow: 0 10px 30px rgba(0,0,0,.08);
+
+      font-family: "Patrick Hand", cursive;
+      font-size: 22px;
+
+      transform: rotate(6deg);
+    }
+
+    /* =========================================================
+       OUDERS & SCHOLEN
+    ========================================================= */
+
+    .audiences {
+      padding: 95px 0 105px;
+    }
+
+    .audience-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+    }
+
+    .audience-card {
+      display: grid;
+      grid-template-columns: 1fr .82fr;
+      align-items: center;
+      gap: 25px;
+
+      padding-top: 25px;
+
+      border-top: 1px solid rgba(61, 110, 99, .4);
+    }
+
+    .audience-label {
+      margin-bottom: 10px;
+
+      color: var(--green);
+
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .audience-card h3 {
+      font-size: 31px;
+    }
+
+    .audience-card p {
+      margin: 15px 0 19px;
+
+      color: var(--muted);
+
+      font-size: 14px;
+    }
+
+    .audience-photo {
+      position: relative;
+
+      height: 300px;
+
+      padding: 8px 8px 30px;
+
+      background: white;
+
+      box-shadow: var(--shadow);
+
+      transform: rotate(3deg);
+    }
+
+    .audience-card:nth-child(2) .audience-photo {
+      transform: rotate(-3deg);
+    }
+
+    .audience-photo span {
+      position: absolute;
+
+      right: 16px;
+      bottom: 4px;
+
+      color: var(--navy);
+
+      font-family: "Patrick Hand", cursive;
+      font-size: 17px;
+    }
+
+    /* =========================================================
+       LOCATIES
+    ========================================================= */
+
+    .locations {
+      position: relative;
+
+      padding: 95px 0 105px;
+
+      overflow: hidden;
+
+      background: var(--paper-2);
+    }
+
+    .locations-grid {
+      display: grid;
+      grid-template-columns: .65fr 1.35fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .location-copy p {
+      margin: 20px 0 25px;
+
+      color: var(--muted);
+    }
+
+    .locations-visual {
+      position: relative;
+
+      min-height: 480px;
+    }
+
+    .region-shape {
+      position: absolute;
+
+      top: 55px;
+      right: 6%;
+      bottom: 35px;
+      left: 7%;
+
+      border-radius:
+        45% 55% 47% 53%
+        / 52% 44% 56% 48%;
+
+      background:
+        radial-gradient(
+          circle at 35% 40%,
+          rgba(61,110,99,.08),
+          transparent 35%
+        ),
+        #dfe4da;
+    }
+
+    .region-shape::before {
+      content: "REGIO UTRECHT";
+
+      position: absolute;
+
+      top: 48%;
+      left: 50%;
+
+      color: rgba(61,110,99,.15);
+
+      font-family: "Manrope", sans-serif;
+      font-size: 29px;
+      font-weight: 800;
+
+      letter-spacing: 6px;
+
+      transform: translate(-50%, -50%);
+    }
+
+    .location-dot {
+      position: absolute;
+      z-index: 5;
+
+      width: 17px;
+      height: 17px;
+
+      border: 4px solid white;
+      border-radius: 50%;
+
+      background: var(--green);
+
+      box-shadow: 0 5px 15px rgba(0,0,0,.16);
+    }
+
+    .location-dot span {
+      position: absolute;
+
+      top: -7px;
+      left: 18px;
+
+      min-width: 130px;
+
+      color: var(--navy);
+
+      font-size: 12px;
+      font-weight: 800;
+
+      white-space: nowrap;
+    }
+
+    .dot-1 { left: 39%; top: 46%; }
+    .dot-2 { left: 62%; top: 38%; }
+    .dot-3 { left: 52%; top: 63%; }
+    .dot-4 { left: 28%; top: 27%; }
+
+    .location-photo {
+      position: absolute;
+      z-index: 6;
+
+      width: 175px;
+      height: 130px;
+
+      padding: 7px 7px 27px;
+
+      background: white;
+
+      box-shadow: var(--shadow);
+    }
+
+    .location-photo span {
+      position: absolute;
+
+      bottom: 5px;
+      left: 9px;
+
+      font-family: "Patrick Hand", cursive;
+      font-size: 15px;
+    }
+
+    .location-photo.one {
+      top: 5px;
+      right: 4%;
+      transform: rotate(5deg);
+    }
+
+    .location-photo.two {
+      bottom: 2px;
+      right: 8%;
+      transform: rotate(-4deg);
+    }
+
+    .location-photo.three {
+      bottom: 4px;
+      left: 0;
+      transform: rotate(4deg);
+    }
+
+    .location-photo.four {
+      top: 4px;
+      left: 3%;
+      transform: rotate(-5deg);
+    }
+
+    .location-writing {
+      position: absolute;
+
+      right: -2px;
+      top: 48%;
+
+      width: 130px;
+
+      color: var(--navy);
+
+      font-family: "Patrick Hand", cursive;
+      font-size: 21px;
+      line-height: 1.05;
+
+      transform: rotate(7deg);
+    }
+
+    /* =========================================================
+       EXTRA DIENSTEN
+    ========================================================= */
+
+    .services {
+      padding: 105px 0;
+
+      background: white;
+    }
+
+    .services-heading {
+      max-width: 720px;
+
+      margin-bottom: 50px;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .service {
+      position: relative;
+
+      min-height: 390px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+
+      overflow: hidden;
+
+      padding: 30px;
+
+      border-radius: 25px;
+
+      color: white;
+
+      background: var(--navy);
+    }
+
+    .service::before {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      z-index: 1;
+
+      background:
+        linear-gradient(
+          0deg,
+          rgba(10,42,52,.94),
+          rgba(10,42,52,.15) 72%
+        );
+    }
+
+    .service:nth-child(1) {
+      background:
+        url("https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1000&q=85")
+        center / cover;
+    }
+
+    .service:nth-child(2) {
+      background:
+        url("https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1000&q=85")
+        center / cover;
+    }
+
+    .service:nth-child(3) {
+      background:
+        url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1000&q=85")
+        center / cover;
+    }
+
+    .service-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .service-number {
+      margin-bottom: 8px;
+
+      color: var(--yellow);
+
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    .service h3 {
+      font-size: 29px;
+    }
+
+    .service p {
+      margin-top: 11px;
+
+      color: rgba(255,255,255,.75);
+
+      font-size: 14px;
+    }
+
+    /* =========================================================
+       CTA
+    ========================================================= */
+
+    .contact-cta {
+      position: relative;
+
+      min-height: 470px;
+
+      display: flex;
+      align-items: center;
+
+      overflow: hidden;
+
+      color: white;
+
+      background:
+        url("https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=1900&q=88")
+        center 62% / cover no-repeat;
+    }
+
+    .contact-cta::before {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(10, 42, 52, .95),
+          rgba(10, 42, 52, .58) 62%,
+          rgba(10, 42, 52, .2)
+        );
+    }
+
+    .contact-content {
+      position: relative;
+      z-index: 2;
+
+      max-width: 670px;
+
+      padding: 90px 0;
+    }
+
+    .contact-content h2 {
+      color: white;
+
+      font-size: clamp(43px, 5vw, 67px);
+    }
+
+    .contact-content p {
+      margin: 20px 0 28px;
+
+      color: rgba(255,255,255,.78);
+
+      font-size: 17px;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .contact-actions .button-outline {
+      border-color: rgba(255,255,255,.6);
+      color: white;
+    }
+
+    .contact-actions .button-outline:hover {
+      background: white;
+      color: var(--navy);
+    }
+
+    .cta-writing {
+      position: absolute;
+      z-index: 4;
+
+      right: 7%;
+      top: 25%;
+
+      width: 170px;
+
+      color: white;
+
+      font-family: "Patrick Hand", cursive;
+      font-size: 26px;
+      line-height: 1.05;
+
+      transform: rotate(6deg);
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    .site-footer {
+      background: var(--navy);
+      color: white;
+
+      padding: 66px 0 24px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr .85fr 1.15fr 1fr;
+      gap: 60px;
+    }
+
+    .footer-brand .logo {
+      display: inline-block;
+
+      margin-bottom: 20px;
+
+      color: white;
+    }
+
+    .footer-brand p {
+      max-width: 270px;
+
+      color: rgba(255,255,255,.65);
+
+      font-size: 13px;
+    }
+
+    .footer-writing {
+      margin-top: 22px;
+
+      color: rgba(255,255,255,.8);
+
+      font-family: "Patrick Hand", cursive;
+      font-size: 23px;
+
+      transform: rotate(-4deg);
+    }
+
+    .footer-column h4 {
+      margin-bottom: 15px;
+
+      color: white;
+
+      font-family: "Manrope", sans-serif;
+      font-size: 14px;
+      letter-spacing: 0;
+    }
+
+    .footer-column a,
+    .footer-column p {
+      display: block;
+
+      color: rgba(255,255,255,.65);
+
+      font-size: 13px;
+      line-height: 1.95;
+    }
+
+    .footer-column a:hover {
+      color: white;
+    }
+
+    .footer-contact-item {
+      margin-bottom: 9px;
+    }
+
+    .footer-contact-item strong {
+      display: block;
+
+      color: rgba(255,255,255,.92);
+
+      font-size: 12px;
+    }
+
+    .socials {
+      display: flex;
+      gap: 9px;
+
+      margin-top: 15px;
+    }
+
+    .social {
+      width: 34px;
+      height: 34px;
+
+      display: grid;
+      place-items: center;
+
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 50%;
+
+      color: white;
+
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .footer-bottom {
+      margin-top: 50px;
+      padding-top: 20px;
+
+      display: flex;
+      justify-content: space-between;
+      gap: 25px;
+
+      border-top: 1px solid rgba(255,255,255,.12);
+
+      color: rgba(255,255,255,.42);
+
+      font-size: 11px;
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    /* =========================================================
+       REVEAL
+    ========================================================= */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+
+      transition:
+        opacity .7s ease,
+        transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+
+    @media (max-width: 1050px) {
+      .desktop-nav {
+        gap: 17px;
+      }
+
+      .desktop-nav > a:not(.button) {
+        font-size: 12px;
+      }
+
+      .code-note {
+        display: none;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .desktop-nav {
+        display: none;
+      }
+
+      .menu-button {
+        display: grid;
+        place-items: center;
+      }
+
+      .mobile-nav {
+        position: fixed;
+        z-index: 999;
+
+        top: 76px;
+        right: 0;
+        left: 0;
+
+        display: none;
+
+        padding: 25px 24px 35px;
+
+        background: white;
+
+        border-bottom: 1px solid var(--line);
+        box-shadow: 0 20px 40px rgba(16,47,61,.1);
+      }
+
+      .mobile-nav.open {
+        display: block;
+      }
+
+      .mobile-nav a {
+        display: block;
+
+        padding: 13px 0;
+
+        border-bottom: 1px solid var(--line);
+
+        font-weight: 700;
+      }
+
+      .mobile-nav .button {
+        display: flex;
+
+        margin-top: 18px;
+
+        border: 0;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy {
+        min-height: 600px;
+
+        padding: 75px 30px;
+      }
+
+      .hero-visual {
+        min-height: 520px;
+
+        clip-path: none;
+      }
+
+      .intro-grid,
+      .code-grid,
+      .locations-grid {
+        grid-template-columns: 1fr;
+
+        gap: 55px;
+      }
+
+      .route-steps {
+        grid-template-columns: 1fr 1fr;
+
+        gap: 45px;
+      }
+
+      .route-line {
+        display: none;
+      }
+
+      .audience-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service {
+        min-height: 420px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+
+        gap: 45px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: calc(100% - 30px);
+      }
+
+      .site-header {
+        height: 68px;
+      }
+
+      .mobile-nav {
+        top: 68px;
+      }
+
+      .logo {
+        font-size: 20px;
+      }
+
+      .hero-copy {
+        min-height: auto;
+
+        padding: 65px 20px 70px;
+      }
+
+      .hero-title {
+        font-size: 49px;
+      }
+
+      .hero-description {
+        font-size: 16px;
+      }
+
+      .hero-actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .hero-actions .button {
+        width: 100%;
+      }
+
+      .hero-stats {
+        justify-content: space-between;
+      }
+
+      .hero-stat {
+        min-width: 0;
+
+        padding: 0 13px;
+      }
+
+      .hero-stat strong {
+        font-size: 22px;
+      }
+
+      .hero-visual {
+        min-height: 410px;
+      }
+
+      .hero-writing {
+        top: 11%;
+        right: 5%;
+
+        width: 145px;
+
+        font-size: 23px;
+      }
+
+      .hero-note {
+        right: 5%;
+        bottom: 5%;
+
+        font-size: 18px;
+      }
+
+      .intro {
+        padding: 78px 0;
+      }
+
+      .collage {
+        height: 365px;
+      }
+
+      .photo-a {
+        top: 70px;
+
+        width: 40%;
+      }
+
+      .photo-b {
+        left: 28%;
+
+        width: 49%;
+      }
+
+      .photo-c {
+        width: 35%;
+      }
+
+      .collage-writing {
+        display: none;
+      }
+
+      .collage-label {
+        left: 30%;
+
+        font-size: 17px;
+      }
+
+      .route {
+        padding: 75px 0;
+      }
+
+      .route-steps {
+        grid-template-columns: 1fr;
+      }
+
+      .route-step {
+        display: grid;
+        grid-template-columns: 65px 1fr;
+        column-gap: 17px;
+      }
+
+      .route-icon {
+        width: 60px;
+        height: 60px;
+
+        grid-row: span 2;
+
+        font-size: 22px;
+      }
+
+      .route-step p {
+        max-width: none;
+      }
+
+      .quote-section {
+        min-height: 560px;
+      }
+
+      .quote-handwriting {
+        right: 5%;
+        bottom: 7%;
+
+        font-size: 22px;
+      }
+
+      .code-section {
+        padding: 80px 0;
+      }
+
+      .tom-letters {
+        font-size: 88px;
+      }
+
+      .value {
+        grid-template-columns: 45px 1fr;
+
+        gap: 15px;
+      }
+
+      .audience-card {
+        grid-template-columns: 1fr;
+      }
+
+      .audience-photo {
+        height: 340px;
+      }
+
+      .locations {
+        padding: 80px 0;
+      }
+
+      .locations-visual {
+        min-height: 570px;
+      }
+
+      .region-shape {
+        top: 130px;
+        right: 3%;
+        bottom: 100px;
+        left: 3%;
+      }
+
+      .location-photo {
+        width: 135px;
+        height: 105px;
+      }
+
+      .location-photo.one {
+        right: 0;
+      }
+
+      .location-photo.two {
+        right: 0;
+      }
+
+      .location-writing {
+        display: none;
+      }
+
+      .dot-1 { left: 33%; top: 48%; }
+      .dot-2 { left: 60%; top: 39%; }
+      .dot-3 { left: 48%; top: 66%; }
+      .dot-4 { left: 22%; top: 32%; }
+
+      .location-dot span {
+        min-width: 90px;
+
+        font-size: 10px;
+      }
+
+      .services {
+        padding: 80px 0;
+      }
+
+      .contact-cta {
+        min-height: 520px;
+      }
+
+      .cta-writing {
+        display: none;
+      }
+
+      .contact-actions {
+        flex-direction: column;
+      }
+
+      .contact-actions .button {
+        width: 100%;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
+
+      .footer-bottom-links {
+        flex-wrap: wrap;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-  <div class="wrap nav">
+  <!-- =======================================================
+       HEADER
+  ======================================================== -->
 
-    <a class="logo" href="#">
-      TOM<span>ONTZORGT</span>
-    </a>
+  <header class="site-header">
 
-    <nav class="links">
-      <a href="#wat">Wat we doen</a>
+    <div class="container header-inner">
+
+      <a href="#home" class="logo">
+        TOM<span>ONTZORGT</span>
+      </a>
+
+      <nav class="desktop-nav">
+        <a href="#wat-we-doen">Wat we doen</a>
+        <a href="#jongeren">Voor jongeren</a>
+        <a href="#ouders">Voor ouders</a>
+        <a href="#scholen">Scholen & partners</a>
+        <a href="#locaties">Locaties</a>
+        <a href="#over-tom">Over Tom</a>
+
+        <a href="#contact" class="button">
+          Kennismaken
+          <span class="button-circle">→</span>
+        </a>
+      </nav>
+
+      <button
+        class="menu-button"
+        id="menuButton"
+        aria-label="Menu openen"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+
+    </div>
+
+    <div class="mobile-nav" id="mobileNav">
+
+      <a href="#wat-we-doen">Wat we doen</a>
       <a href="#jongeren">Voor jongeren</a>
       <a href="#ouders">Voor ouders</a>
       <a href="#scholen">Scholen & partners</a>
       <a href="#locaties">Locaties</a>
-      <a href="#over">Over Tom</a>
+      <a href="#over-tom">Over Tom</a>
 
-      <a href="#contact" class="btn">
+      <a href="#contact" class="button">
         Kennismaken
-        <span class="arrow">→</span>
+        <span class="button-circle">→</span>
       </a>
-    </nav>
 
-    <div class="menu">☰</div>
+    </div>
 
-  </div>
-</header>
+  </header>
 
 
-<main>
+  <main>
 
-<!-- HERO -->
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
 
-<section class="hero">
+    <section class="hero" id="home">
 
-  <div class="hero-grid">
+      <div class="hero-grid">
 
-    <div class="hero-copy">
+        <div class="hero-copy">
 
-      <div class="eyebrow">
-        Samen talenten ontdekken
+          <div class="eyebrow">
+            Samen talenten ontdekken
+          </div>
+
+          <h1 class="hero-title">
+            Een plek waar je niet hoeft uit te leggen
+            <span class="hero-title-hand">
+              wie je bent.
+            </span>
+          </h1>
+
+          <p class="hero-description">
+            Bij TomOntzorgt draait het om wie jij bent en wat jij wilt.
+            Ontdek je talenten, ontmoet andere jongeren en ontwikkel jezelf
+            op jouw manier en in jouw tempo.
+          </p>
+
+          <div class="hero-actions">
+
+            <a href="#jongeren" class="button">
+              Ontdek wat bij jou past
+              <span class="button-circle">→</span>
+            </a>
+
+            <a href="#scholen" class="button button-outline">
+              Voor scholen & partners
+            </a>
+
+          </div>
+
+          <div class="hero-stats">
+
+            <div class="hero-stat">
+              <strong>4</strong>
+              <span>Locaties</span>
+            </div>
+
+            <div class="hero-stat">
+              <strong>80</strong>
+              <span>Tommaatjes</span>
+            </div>
+
+            <div class="hero-stat">
+              <strong>6</strong>
+              <span>Collega's</span>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="hero-visual">
+
+          <div class="hero-writing">
+            Samen kan je meer
+            dan je denkt
+            <span class="hero-writing-arrow">↓</span>
+          </div>
+
+          <div class="hero-note">
+            Andere jongeren.<br>
+            Echte vriendschappen. ♡
+          </div>
+
+        </div>
+
       </div>
 
-      <h1>
-        Een plek waar je niet hoeft uit te leggen
-        <span class="hand">wie je bent
+    </section>
+
+
+    <!-- =====================================================
+         UITGANGSPUNT
+    ====================================================== -->
+
+    <section class="intro" id="wat-we-doen">
+
+      <div class="container intro-grid">
+
+        <div class="intro-copy reveal">
+
+          <div class="eyebrow">
+            Ons uitgangspunt
+          </div>
+
+          <h2 class="section-title">
+            Niet kijken naar wat niet kan.
+            Beginnen bij wat
+            <span class="green-underline">
+              wél kan.
+            </span>
+          </h2>
+
+          <p>
+            Iedere jongere heeft talenten. Wij helpen die ontdekken en
+            ontwikkelen. Niet vanuit een standaardprogramma, maar door te
+            kijken naar persoonlijkheid, interesses, mogelijkheden en wat
+            iemand nodig heeft om verder te groeien.
+          </p>
+
+          <a href="#over-tom" class="text-link">
+            Meer over onze werkwijze →
+          </a>
+
+        </div>
+
+
+        <div class="collage reveal">
+
+          <div class="collage-photo photo-a">
+            <img
+              src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=85"
+              alt="Jongere creatief aan het werk"
+            >
+          </div>
+
+          <div class="collage-photo photo-b">
+            <img
+              src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1000&q=85"
+              alt="Jongeren die samen actief zijn"
+            >
+          </div>
+
+          <div class="collage-photo photo-c">
+            <img
+              src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=850&q=85"
+              alt="Jongeren in gesprek"
+            >
+          </div>
+
+          <div class="collage-label">
+            Maken • ontdekken • groeien
+          </div>
+
+          <div class="collage-writing">
+            Iedereen heeft talent.
+            Soms moet je het alleen
+            nog vinden. ↙
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         ROUTE
+    ====================================================== -->
+
+    <section class="route" id="jongeren">
+
+      <div class="container">
+
+        <div class="route-heading reveal">
+
+          <div class="eyebrow">
+            Een route die bij jou past
+          </div>
+
+          <h2 class="section-title">
+            Kleine stappen,
+            grote ontwikkeling.
+          </h2>
+
+          <p>
+            Van ondersteuning op school tot talent ontdekken,
+            vrije tijd en groeien richting werk of dagbesteding.
+          </p>
+
+        </div>
+
+
+        <div class="route-steps">
+
+          <svg
+            class="route-line"
+            viewBox="0 0 1000 80"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M0 40 C100 5 140 75 245 40 S390 5 500 40 S650 75 745 35 S900 5 1000 40"
+              fill="none"
+              stroke="#3d6e63"
+              stroke-width="2"
+              stroke-linecap="round"
+              opacity=".45"
+            />
+          </svg>
+
+
+          <article class="route-step reveal">
+
+            <div class="route-icon">🎒</div>
+
+            <h3>Op school</h3>
+
+            <p>
+              Ondersteuning tijdens school, pauzemomenten en naschoolse
+              trajecten. Veiligheid en meedoen staan voorop.
+            </p>
+
+          </article>
+
+
+          <article class="route-step reveal">
+
+            <div class="route-icon">✦</div>
+
+            <h3>Talent ontdekken</h3>
+
+            <p>
+              Proberen, ervaren en ontdekken waar iemand blij van wordt
+              en welke talenten verder kunnen groeien.
+            </p>
+
+          </article>
+
+
+          <article class="route-step reveal">
+
+            <div class="route-icon">☀</div>
+
+            <h3>Vrije tijd</h3>
+
+            <p>
+              Samen activiteiten ondernemen, ontspannen en vriendschappen
+              buiten school verder opbouwen.
+            </p>
+
+          </article>
+
+
+          <article class="route-step reveal">
+
+            <div class="route-icon">↗</div>
+
+            <h3>Werk & ontwikkeling</h3>
+
+            <p>
+              Individuele werk- en leertrajecten, dagbesteding en coaching
+              gericht op ontwikkeling en zelfstandigheid.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         QUOTE
+    ====================================================== -->
+
+    <section class="quote-section">
+
+      <div class="container">
+
+        <div class="quote-content reveal">
+
+          <div class="quote-mark">
+            “
+          </div>
+
+          <h2>
+            Een goede match begint niet
+            bij een dossier.
+            Die begint bij een mens.
+          </h2>
+
+          <p>
+            Persoonlijkheid en interesses vormen de basis voor
+            verbinding, vertrouwen en duurzame vriendschappen.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="quote-handwriting">
+        Je hoort erbij<br>
+        zoals je bent ♡
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CODE TOM
+    ====================================================== -->
+
+    <section class="code-section" id="over-tom">
+
+      <div class="container code-grid">
+
+        <div class="code-intro reveal">
+
+          <div class="eyebrow">
+            CODE TOM
+          </div>
+
+          <h2 class="section-title">
+            Zo werkt TOM.
+          </h2>
+
+          <p>
+            Drie waarden die richting geven aan hoe we samenwerken,
+            begeleiden en met elkaar omgaan.
+          </p>
+
+          <div class="tom-letters">
+            <span>T</span>
+            <span>O</span>
+            <span>M</span>
+          </div>
+
+        </div>
+
+
+        <div class="values reveal">
+
+          <div class="value">
+
+            <div class="value-letter">
+              T
+            </div>
+
+            <div>
+              <h3>Trouw aan afspraken</h3>
+              <p>
+                We komen op tijd, houden ons aan afspraken en zorgen
+                samen voor structuur en duidelijkheid.
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="value">
+
+            <div class="value-letter">
+              O
+            </div>
+
+            <div>
+              <h3>Open en respectvol</h3>
+              <p>
+                We luisteren naar elkaar, spreken eerlijk en respecteren
+                ieders grenzen en gevoelens.
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="value">
+
+            <div class="value-letter">
+              M
+            </div>
+
+            <div>
+              <h3>Meedoen en ontwikkelen</h3>
+              <p>
+                We zetten ons actief in, helpen elkaar en werken
+                aan onze eigen groei en talenten.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="code-note">
+        De kracht<br>
+        zit in jou ♡
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         OUDERS & SCHOLEN
+    ====================================================== -->
+
+    <section class="audiences">
+
+      <div class="container audience-grid">
+
+        <article class="audience-card reveal" id="ouders">
+
+          <div>
+
+            <div class="audience-label">
+              Voor ouders
+            </div>
+
+            <h3>
+              Een vertrouwde plek,
+              ook voor u.
+            </h3>
+
+            <p>
+              Uw kind krijgt een veilige en positieve omgeving om te
+              groeien. We kijken samen naar wat past, houden contact
+              en bouwen vanuit vertrouwen verder.
+            </p>
+
+            <a href="#contact" class="text-link">
+              Kennismaken →
+            </a>
+
+          </div>
+
+
+          <div class="audience-photo">
+
+            <img
+              src="https://images.unsplash.com/photo-1543269865-0a740d43b90c?auto=format&fit=crop&w=900&q=85"
+              alt="Persoonlijke begeleiding"
+            >
+
+            <span>
+              Samen sterker ♡
+            </span>
+
+          </div>
+
+        </article>
+
+
+        <article class="audience-card reveal" id="scholen">
+
+          <div>
+
+            <div class="audience-label">
+              Voor scholen & partners
+            </div>
+
+            <h3>
+              Praktische ondersteuning
+              in en rondom school.
+            </h3>
+
+            <p>
+              Van pauzeactiviteiten en naschoolse trajecten tot
+              individuele begeleiding. Samen creëren we een omgeving
+              waarin leerlingen kunnen deelnemen en groeien.
+            </p>
+
+            <a href="mailto:tom@tomontzorgt.nl" class="text-link">
+              Partner worden →
+            </a>
+
+          </div>
+
+
+          <div class="audience-photo">
+
+            <img
+              src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=85"
+              alt="School en begeleiding"
+            >
+
+            <span>
+              Samen maken we ruimte
+            </span>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         LOCATIES
+    ====================================================== -->
+
+    <section class="locations" id="locaties">
+
+      <div class="container locations-grid">
+
+        <div class="location-copy reveal">
+
+          <div class="eyebrow">
+            Onze locaties
+          </div>
+
+          <h2 class="section-title">
+            Dichtbij waar
+            jongeren al zijn.
+          </h2>
+
+          <p>
+            TomOntzorgt werkt vanuit verschillende plekken rondom
+            Utrecht: op scholen én vanuit het eigen Talentenhuis.
+          </p>
+
+          <a
+            href="https://tomontzorgt.nl/onze-locaties/"
+            class="text-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Bekijk alle locaties →
+          </a>
+
+        </div>
+
+
+        <div class="locations-visual reveal">
+
+          <div class="region-shape"></div>
+
+
+          <div class="location-dot dot-1">
+            <span>STIP VSO — Utrecht</span>
+          </div>
+
+          <div class="location-dot dot-2">
+            <span>Luc Stevensschool</span>
+          </div>
+
+          <div class="location-dot dot-3">
+            <span>Talentenhuis — Maarssen</span>
+          </div>
+
+          <div class="location-dot dot-4">
+            <span>Bosschool — Doorn</span>
+          </div>
+
+
+          <div class="location-photo one">
+
+            <img
+              src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=700&q=80"
+              alt="Schoollocatie"
+            >
+
+            <span>
+              STIP VSO
+            </span>
+
+          </div>
+
+
+          <div class="location-photo two">
+
+            <img
+              src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=700&q=80"
+              alt="Talentenhuis"
+            >
+
+            <span>
+              Talentenhuis
+            </span>
+
+          </div>
+
+
+          <div class="location-photo three">
+
+            <img
+              src="https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?auto=format&fit=crop&w=700&q=80"
+              alt="School in regio Utrecht"
+            >
+
+            <span>
+              Bosschool
+            </span>
+
+          </div>
+
+
+          <div class="location-photo four">
+
+            <img
+              src="https://images.unsplash.com/photo-1564981797816-1043664bf78d?auto=format&fit=crop&w=700&q=80"
+              alt="Onderwijslocatie"
+            >
+
+            <span>
+              Luc Stevensschool
+            </span>
+
+          </div>
+
+
+          <div class="location-writing">
+            Vier plekken.<br>
+            Eén gedachte:<br>
+            iedereen doet mee. ♡
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         AANBOD
+    ====================================================== -->
+
+    <section class="services">
+
+      <div class="container">
+
+        <div class="services-heading reveal">
+
+          <div class="eyebrow">
+            Meer dan één route
+          </div>
+
+          <h2 class="section-title">
+            Ondersteuning die
+            meebeweegt.
+          </h2>
+
+          <p class="section-copy">
+            Soms ligt de behoefte op school, soms juist daarbuiten.
+            Daarom combineert TomOntzorgt verschillende vormen van
+            begeleiding en ontwikkeling.
+          </p>
+
+        </div>
+
+
+        <div class="service-grid">
+
+          <article class="service reveal">
+
+            <div class="service-content">
+
+              <div class="service-number">
+                01 — TALENTENPLEK
+              </div>
+
+              <h3>
+                Ontdekken op school
+              </h3>
+
+              <p>
+                Een veilige en stimulerende omgeving tijdens school,
+                pauzes en na schooltijd.
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article class="service reveal">
+
+            <div class="service-content">
+
+              <div class="service-number">
+                02 — TALENTENHUIS
+              </div>
+
+              <h3>
+                Ontmoeten buiten school
+              </h3>
+
+              <p>
+                Activiteiten, dagbesteding en ruimte om talenten en
+                vriendschappen verder te ontwikkelen.
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article class="service reveal">
+
+            <div class="service-content">
+
+              <div class="service-number">
+                03 — COACHING
+              </div>
+
+              <h3>
+                Groeien op jouw manier
+              </h3>
+
+              <p>
+                Coaching, individuele werk- en leertrajecten en
+                ondersteuning rondom neurodiversiteit.
+              </p>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CONTACT CTA
+    ====================================================== -->
+
+    <section class="contact-cta" id="contact">
+
+      <div class="container">
+
+        <div class="contact-content reveal">
+
+          <div class="eyebrow light">
+            Eerst gewoon kennismaken
+          </div>
+
+          <h2>
+            Benieuwd of TOM
+            bij jou past?
+          </h2>
+
+          <p>
+            Geen ingewikkeld verhaal. We maken graag kennis, luisteren
+            naar de situatie en kijken samen welke ondersteuning,
+            plek of samenwerking aansluit.
+          </p>
+
+          <div class="contact-actions">
+
+            <a
+              href="tel:+31624318301"
+              class="button"
+            >
+              Bel 06 243 18 301
+              <span class="button-circle">→</span>
+            </a>
+
+            <a
+              href="mailto:info@tomontzorgt.nl"
+              class="button button-outline"
+            >
+              Stuur een e-mail
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="cta-writing">
+        Nieuwe dag.<br>
+        Nieuwe kans.<br>
+        Gewoon samen. ♡
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =======================================================
+       FOOTER
+  ======================================================== -->
+
+  <footer class="site-footer">
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+
+          <a href="#home" class="logo">
+            TOM<span>ONTZORGT</span>
+          </a>
+
+          <p>
+            Begeleiden met elkaar. Voor jongeren die ruimte verdienen
+            om zichzelf te zijn, anderen te ontmoeten en hun talenten
+            te ontwikkelen.
+          </p>
+
+          <div class="footer-writing">
+            Gewoon samen verder ♡
+          </div>
+
+        </div>
+
+
+        <div class="footer-column">
+
+          <h4>
+            Snel naar
+          </h4>
+
+          <a href="#wat-we-doen">
+            Wat we doen
+          </a>
+
+          <a href="#jongeren">
+            Voor jongeren
+          </a>
+
+          <a href="#ouders">
+            Voor ouders
+          </a>
+
+          <a href="#scholen">
+            Scholen & partners
+          </a>
+
+          <a href="#locaties">
+            Locaties
+          </a>
+
+          <a href="#over-tom">
+            Over Tom
+          </a>
+
+          <a href="#contact">
+            Contact
+          </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+          <h4>
+            Contact
+          </h4>
+
+          <div class="footer-contact-item">
+            <strong>Algemeen</strong>
+            <a href="tel:+31624318301">
+              06 243 18 301
+            </a>
+          </div>
+
+          <div class="footer-contact-item">
+            <strong>Zorg / werken bij</strong>
+            <a href="tel:+31648365647">
+              06 483 65 647
+            </a>
+          </div>
+
+          <div class="footer-contact-item">
+            <strong>Algemene e-mail</strong>
+            <a href="mailto:info@tomontzorgt.nl">
+              info@tomontzorgt.nl
+            </a>
+          </div>
+
+          <div class="footer-contact-item">
+            <strong>Samenwerking</strong>
+            <a href="mailto:tom@tomontzorgt.nl">
+              tom@tomontzorgt.nl
+            </a>
+          </div>
+
+          <div class="footer-contact-item">
+            <strong>Financieel</strong>
+            <a href="mailto:financieel@tomontzorgt.nl">
+              financieel@tomontzorgt.nl
+            </a>
+          </div>
+
+        </div>
+
+
+        <div class="footer-column">
+
+          <h4>
+            Organisatie
+          </h4>
+
+          <p>
+            KVK: 94419434
+          </p>
+
+          <p>
+            AGB: 41545759
+          </p>
+
+          <br>
+
+          <a
+            href="https://tomontzorgt.nl/documenten/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Documenten
+          </a>
+
+          <a
+            href="https://tomontzorgt.nl/werken-bij/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Werken bij
+          </a>
+
+          <a
+            href="https://tomontzorgt.nl/blog/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Blog
+          </a>
+
+          <a
+            href="https://tomontzorgt.nl/partner-worden/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Partner worden
+          </a>
+
+          <div class="socials">
+
+            <a
+              href="#"
+              class="social"
+              aria-label="Instagram"
+            >
+              IG
+            </a>
+
+            <a
+              href="#"
+              class="social"
+              aria-label="LinkedIn"
+            >
+              in
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="footer-bottom">
+
+        <div>
+          © <span id="year"></span> TomOntzorgt · Concept redesign
+        </div>
+
+        <div class="footer-bottom-links">
+
+          <a
+            href="https://tomontzorgt.nl/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Huidige website
+          </a>
+
+          <span>
+            KVK 94419434
+          </span>
+
+          <span>
+            AGB 41545759
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =======================================================
+       JAVASCRIPT
+  ======================================================== -->
+
+  <script>
+    /*
+     * Mobiel menu
+     */
+
+    const menuButton = document.getElementById("menuButton");
+    const mobileNav = document.getElementById("mobileNav");
+
+    menuButton.addEventListener("click", function () {
+
+      const isOpen = mobileNav.classList.toggle("open");
+
+      document.body.classList.toggle("menu-open", isOpen);
+
+      menuButton.setAttribute(
+        "aria-expanded",
+        isOpen ? "true" : "false"
+      );
+
+      menuButton.textContent = isOpen ? "✕" : "☰";
+
+    });
+
+
+    /*
+     * Menu sluiten wanneer gebruiker een link kiest
+     */
+
+    document
+      .querySelectorAll(".mobile-nav a")
+      .forEach(function(link) {
+
+        link.addEventListener("click", function() {
+
+          mobileNav.classList.remove("open");
+
+          document.body.classList.remove("menu-open");
+
+          menuButton.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+          menuButton.textContent = "☰";
+
+        });
+
+      });
+
+
+    /*
+     * Scroll reveal
+     */
+
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+    const observer =
+      new IntersectionObserver(
+        function(entries) {
+
+          entries.forEach(function(entry) {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("visible");
+
+              observer.unobserve(entry.target);
+
+            }
+
+          });
+
+        },
+        {
+          threshold: 0.12
+        }
+      );
+
+    revealElements.forEach(function(element) {
+      observer.observe(element);
+    });
+
+
+    /*
+     * Jaar automatisch invullen
+     */
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
